@@ -36,25 +36,16 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>xar</packaging>
   <scm>
-    <connection>scm:svn:http://svn.xwikisas.com/svnroot/xwiki/products/extensions/xwiki-application-reader/trunk</connection>
-    <developerConnection>scm:svn:https://svn.xwikisas.com/svnroot/xwiki/products/extensions/xwiki-application-reader/trunk</developerConnection>
-    <url>http://svn.xwikisas.com/svnroot/xwiki/products/extensions/xwiki-application-reader/trunk</url>
+    <connection>scm:git:git://github.com/jvelo/xwiki-reader.git</connection>
+    <developerConnection>scm:git:git@github.com:jvelo/xwiki-reader.git</developerConnection>
+    <url>https://jvelo@github.com/jvelo/xwiki-reader.git</url>
   </scm>
   <distributionManagement>
-    <site>
-      <id>maven.xwikisas.com</id>
-      <url>scp://maven.xwikisas.com/home/maven/public_html/site</url>
-    </site>
     <repository>
-      <id>maven.xwikisas.com</id>
-      <name>XWiki SAS Maven2 Remote Repository for Releases</name>
-      <url>scp://maven.xwikisas.com/home/maven/public_html/releases</url>
+      <id>xwiki-staging</id>
+      <name>XWiki Staging Repository</name>
+      <url>http://nexus.xwiki.org/nexus/service/local/staging/deploy/maven2/</url>
     </repository>
-    <snapshotRepository>
-      <id>maven.xwikisas.com</id>
-      <name>XWiki SAS Maven2 Development Repository for Snapshots</name>
-      <url>scp://maven.xwikisas.com/home/maven/public_html/snapshots</url>
-    </snapshotRepository>
   </distributionManagement>
   <dependencies>
     <dependency>
