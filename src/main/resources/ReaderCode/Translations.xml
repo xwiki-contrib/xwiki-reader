@@ -11,20 +11,20 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1270927630000</creationDate>
-<date>1272740281000</date>
-<contentUpdateDate>1272740281000</contentUpdateDate>
-<version>1.1</version>
+<date>1290185143000</date>
+<contentUpdateDate>1290185143000</contentUpdateDate>
+<version>4.1</version>
 <title></title>
 <template></template>
 <defaultTemplate></defaultTemplate>
 <validationScript></validationScript>
-<comment>Imported from XAR</comment>
+<comment></comment>
 <minorEdit>false</minorEdit>
 <syntaxId>xwiki/2.0</syntaxId>
 <hidden>false</hidden>
-<content>cww.reader.flag=
-cww.reader.read=
-cww.reader.title=Title
-cww.reader.doc.creationDate=Date
-cww.reader.by=By
+<content>reader.flag=
+reader.read=
+reader.title=Title
+reader.doc.creationDate=Date
+reader.by=By
 foo=There {0,choice,0#are no files|1#is one file|1&lt;are {0} files}</content></xwikidoc>

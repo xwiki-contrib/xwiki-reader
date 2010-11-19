@@ -11,15 +11,15 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1270831810000</creationDate>
-<date>1290118398000</date>
-<contentUpdateDate>1290118398000</contentUpdateDate>
-<version>1.1</version>
+<date>1290185120000</date>
+<contentUpdateDate>1290185120000</contentUpdateDate>
+<version>3.3</version>
 <title></title>
 <template></template>
 <defaultTemplate></defaultTemplate>
 <validationScript></validationScript>
 <comment></comment>
-<minorEdit>false</minorEdit>
+<minorEdit>true</minorEdit>
 <syntaxId>xwiki/2.0</syntaxId>
 <hidden>false</hidden><attachment>
 <filename>filter.png</filename>
@@ -114,12 +114,12 @@ sLNrIAE53U4Rbsy6LQAAAABJRU5ErkJggg==
 <code>(function(XWiki) { 
 
     // Sub-module creation, if needed
-    var cww = XWiki.cww = XWiki.cww || {}; 
+    var reader = XWiki.reader = XWiki.reader || {}; 
  
     /**
      * The feed reader
      */
-    cww.Reader = Class.create({
+    reader.Reader = Class.create({
         
       initialize:function(id, options){
 
@@ -159,7 +159,7 @@ sLNrIAE53U4Rbsy6LQAAAABJRU5ErkJggg==
       },
 
       addEntry: function(event) {
-        this.entries.push(new XWiki.cww.ReaderEntry(this, event.memo.row, event.memo.data));
+        this.entries.push(new XWiki.reader.ReaderEntry(this, event.memo.row, event.memo.data));
       },
 
       collapseAll: function(){
@@ -171,7 +171,7 @@ sLNrIAE53U4Rbsy6LQAAAABJRU5ErkJggg==
     /**
      * Represents a feed reader entry
      */
-    cww.ReaderEntry = Class.create({
+    reader.ReaderEntry = Class.create({
 
       initialize: function(reader, row, data) {
     
@@ -424,7 +424,7 @@ sLNrIAE53U4Rbsy6LQAAAABJRU5ErkJggg==
 }(XWiki || {}));
 
 document.observe("dom:loaded", function(){
-  new XWiki.cww.Reader("cwwreader");
+  new XWiki.reader.Reader("reader");
 });</code>
 </property>
 <property>
@@ -697,7 +697,7 @@ div.fullScreenEditLinkContainer {
 #set($filters = "#includeTopic('ReaderCode.TopFilters')")
 #set($options = { "selectedColumn" : "date"
                  ,"defaultOrder" : "desc"
-                 ,"translationPrefix" : "cww.reader."
+                 ,"translationPrefix" : "reader."
                  ,"rowCount": 30
                  ,"tagCloud" : true
                  ,"resultPage" : "ReaderCode.FeedReaderLiveTableResults"
@@ -705,6 +705,6 @@ div.fullScreenEditLinkContainer {
                  ,"extraParams" : "space=$doc.space"
                  ,"description": "Collaborative Web Watch Articles" 
                  ,"topFilters":  "$filters" })
-#livetable("cwwreader" $collist $colprops $options)
+#livetable("reader" $collist $colprops $options)
 {{/velocity}}
 )))</content></xwikidoc>
