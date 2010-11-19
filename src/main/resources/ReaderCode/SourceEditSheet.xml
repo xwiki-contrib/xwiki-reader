@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xwikidoc>
+<web>ReaderCode</web>
+<name>SourceEditSheet</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1273053771000</creationDate>
+<date>1273086572000</date>
+<contentUpdateDate>1273086572000</contentUpdateDate>
+<version>9.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/2.0</syntaxId>
+<hidden>false</hidden>
+<content>{{velocity output="false"}}
+
+$xwiki.ssx.use('ReaderCode.Sources')
+
+## Check if the source exists and it's being edited,
+##  or it is just being created
+#set($sourceClass = "XWiki.AggregatorURLClass")
+#set($sourceExists = $doc.getObject($sourceClass))
+
+## Get the source object (a fake one, if missing)
+$doc.updateObjectsFromRequest($sourceClass)
+#set($source = $doc.getObject($sourceClass, true))
+{{/velocity}}
+
+{{velocity}}
+{{html clean="false" wiki="true"}}
+##
+## If this is the creation step, the context action is view,
+##  so the wrapping form must be manually declared 
+#if (!$sourceExists)
+  &lt;form action="" method="post"&gt;
+#end
+  &lt;div class="source"&gt;
+##
+##
+##
+## Part 1: Title, question
+##
+&lt;fieldset class="source-section"&gt;
+  &lt;legend class="section-title"&gt;Source Details&lt;/legend&gt; 
+  &lt;div class="source-title"&gt;
+    &lt;label for="title"&gt;Title&lt;/label&gt;
+    #if($sourceExists)
+      #set($sourceTitle = $!escapetool.xml($doc.title))
+    #else
+      #set($sourceTitle = $!escapetool.xml($!request.title))
+    #end
+    &lt;input type="text" name="title" value="$!{sourceTitle}" size="80"/&gt;
+  &lt;/div&gt;
+  &lt;div class="source-url"&gt;
+    &lt;label for="${sourceClass}_url"&gt;URL&lt;/label&gt;
+    $source.display('url', 'edit')
+  &lt;/div&gt;
+&lt;/fieldset&gt;
+##
+## If this is the creation step, the context action is view,
+##  so the wrapping form must be manually declared 
+#if (!$sourceExists)
+    &lt;input type="hidden" name="xcreate" value="source"/&gt;
+    &lt;div class="buttons"&gt;
+      &lt;span class="buttonwrapper"&gt;&lt;input class="button" type="submit" value="Add Soure"/&gt;&lt;/span&gt;
+      &lt;a href="$xwiki.getURL('Sources')" class="secondary button"&gt;Cancel&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+#end## source exists
+&lt;/div&gt;
+{{/html}}
+
+{{/velocity}}</content></xwikidoc>

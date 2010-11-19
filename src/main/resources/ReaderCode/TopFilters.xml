@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xwikidoc>
+<web>ReaderCode</web>
+<name>TopFilters</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1270997422000</creationDate>
+<date>1290110190000</date>
+<contentUpdateDate>1290110190000</contentUpdateDate>
+<version>5.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/2.0</syntaxId>
+<hidden>false</hidden><attachment>
+<filename>trash.png</filename>
+<filesize>150</filesize>
+<author>XWiki.Admin</author>
+<date>1271009102000</date>
+<version>1.1</version>
+<comment></comment><content>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAXUlEQVR42u2SwQoAIAhD88vVLy8K
+BlaS0i1oJwP3piGVg0Skmpq8HjqZrWl9uwCbGAmwKYGZs/6iqgMyAdJuM8W2QmYKpLt/0AG9ASCv
+/oAnANd3AEjmAlFT1BypAV+PnRH5YehvAAAAAElFTkSuQmCC</content></attachment><attachment>
+<filename>checkbox.png</filename>
+<filesize>243</filesize>
+<author>XWiki.Admin</author>
+<date>1271009712000</date>
+<version>1.1</version>
+<comment></comment><content>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAuklEQVR42qWScQfFIBTF27dNzIxM
+xtREkpjE7Nu+98q7U+96T0/nj3Vv55wfsYF0akgfpdTj3+KrM1QAKWVzed93DNi2rRmgtcaAdV1/
+lowxBDJpRgAhxNeytTafkEk7AizLkk3nHIEZdlCZQQDOeTa99/lMO8ywg9I9AszznM3jONATwAOl
+DAJM03QHQgj3XN6XPgKM41iFYozk8670EIAx1vgXEHKeJwZQSpsB13VhQHP7rQrQo27AE+MRcBFO
+D9LhAAAAAElFTkSuQmCC</content></attachment><attachment>
+<filename>starempty.png</filename>
+<filesize>203</filesize>
+<author>XWiki.Admin</author>
+<date>1271007655000</date>
+<version>1.1</version>
+<comment></comment><content>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAkklEQVR42rVTQQ7AIAgbL9Ofuf1M
+X7aBCQtDusWY9YIRbQsobYugXwl2ho3TBLXWU2LOmaYJRLUwZH0wkAtIIOoppb5urUEXpGp8oNiE
+XlYIiRPorm5Wa/kLtqSHLXXi1a0LVYY9QCTRZUiASommMRBo933TdM9PY+iBqHu7tizvgry6RDTz
+KD84eHv30Znl33gBM2J1ERrHh30AAAAASUVORK5CYII=
+</content></attachment><attachment>
+<filename>category.png</filename>
+<filesize>162</filesize>
+<author>XWiki.Admin</author>
+<date>1271009116000</date>
+<version>1.1</version>
+<comment></comment><content>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAaUlEQVR42q2SUQ7AIAhD5eTAyXUs
+cZla2Iz0ww+xrypQORSlAUSkzsVr7zOAupGZl6KqQtMbfAOQOZKBO2QBeKnzGQiwgncbBDbIA4jM
+0VNyAF4X/nxkDiC1jdsAW9AYRxomcSsa6BjQAOuBVw/oY0kYAAAAAElFTkSuQmCC</content></attachment>
+<object>
+<class>
+<name>XWiki.JavaScriptExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<disabled>0</disabled>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<disabled>0</disabled>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<disabled>0</disabled>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<disabled>0</disabled>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<disabled>0</disabled>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>currentPage=Always on this page|onDemand=On demand|always=Always on this wiki</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>ReaderCode.TopFilters</name>
+<number>0</number>
+<className>XWiki.JavaScriptExtension</className>
+<guid>0c5ee833-5afb-43cd-9e1b-5e90a9bcb76d</guid>
+<property>
+<cache>forbid</cache>
+</property>
+<property>
+<code>(function(XWiki) { 
+
+    // Sub-module creation, if needed
+    var cww = XWiki.cww = XWiki.cww || {}; 
+
+    cww.Filter = Class.create({
+      initialize:function(elem, value, operator){
+        this.container = $(elem);
+        this.input = this.container.down("input[type='hidden'].value"); // The actual livetable filter
+        this.operator = this.container.down("input[type='hidden'].operator");
+        this.values = this.container.select('.filterValue');
+        this.exclusiveValues = this.container.select('.exclusive');
+        for (var i=0;i&lt;this.values.length;i++){
+          this.values[i].observe("click", this.handleClick.bindAsEventListener(this));
+          if(typeof value != 'undefined' &amp;&amp; this.values[i].down('span.hidden').innerHTML == value &amp;&amp;
+             (typeof operator == 'undefined' || operator == this.values[i].down('span.operator').innerHTML)) {
+            this.values[i].addClassName('selected');
+          }
+        }
+      },
+
+      handleClick : function(event) {
+        var target = event.element().hasClassName('filterValue') ? event.element() : event.element().up('.filterValue');
+        if (!target.hasClassName('selected')) {
+          if (target.hasClassName('exclusive')) {
+            // If clicked filter is exclusive, clear all other values
+            this.values.invoke('removeClassName', 'selected');
+          }
+          else {
+            // clear only exclusive values
+            this.exclusiveValues.invoke('removeClassName', 'selected');
+          }
+        }
+        target.toggleClassName('selected');
+        this.refreshFilterValue();
+      },
+
+      refreshFilterValue: function() {
+        var selected = this.container.select(".selected");
+        var target = document;
+        if (selected.length == 0) {
+          this.input.value = '';
+          this.operator.value = '';
+        }
+        else if (selected.length == 1) {
+          target = selected.first();
+          this.input.value = selected.first().down('span.hidden').innerHTML;
+          if (typeof selected.first().down('span.operator') != "undefined") {
+            this.operator.value = selected.first().down('span.operator').innerHTML;
+          }
+          else {
+            this.operator.value = '';
+          }
+        }
+        else {
+          // Not supported for the moment.
+        }
+        target.fire("xwiki:livetable:cwwreader:filtersChanged");
+      }
+      
+    });
+
+}(XWiki || {}));
+
+document.observe("dom:loaded", function(){
+
+  var filters = {};
+
+  var hashString = window.location.hash.substring(1);
+  if (!hashString.blank()) {
+    var tables = hashString.split("|");
+    for (var i=0;i&lt;tables.length;i++) {
+      var params = tables[i].toQueryParams();
+      if (params["t"] == 'cwwreader') { // that's our table !
+        var parameterNames = Object.keys(params), result = new Object();
+        for (var j=0;j&lt;parameterNames.length;j++) {
+          filters[parameterNames[j]] = params[parameterNames[j]];
+        }
+        break;
+      }
+    }
+  }
+
+  new XWiki.cww.Filter($('readfilter'), filters['read'], filters['operator@read']);   
+  new XWiki.cww.Filter($('flagfilter'), filters['flag'], filters['operator@flag']);
+});</code>
+</property>
+<property>
+<name></name>
+</property>
+<property>
+<parse>0</parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.StyleSheetExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<disabled>0</disabled>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<disabled>0</disabled>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<disabled>0</disabled>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<disabled>0</disabled>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<disabled>0</disabled>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>currentPage=Always on this page|onDemand=On demand|always=Always on this wiki</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>ReaderCode.TopFilters</name>
+<number>0</number>
+<className>XWiki.StyleSheetExtension</className>
+<guid>f8e2f91c-f34f-41d0-99fe-9e7b4aa68975</guid>
+<property>
+<cache>default</cache>
+</property>
+<property>
+<code>## Use the current ColorTheme
+#template('colorThemeInit.vm')
+
+## Generate reference to background image
+#macro(imgURL $name) url($xwiki.getSkinFile("icons/silk/${name}.gif")) #end
+
+## Generate reference to background image
+#macro(attImgURL $name) url($doc.getAttachmentURL("${name}.png")) #end
+
+div.read .filterLabel     { background: #attImgURL('checkbox') no-repeat; }
+div.flag .filterLabel     { background: #attImgURL('starempty') no-repeat; }
+div.category .filterLabel { background: #attImgURL('category') no-repeat; }
+div.trash .filterLabel    { background: #attImgURL('trash') no-repeat; }
+
+div.filters div.filter {
+  margin-bottom: 10px;
+}
+
+span.filterLabel {
+  font-style:italic;
+  margin-right:15px;
+  padding-left:20px;
+  display: table-cell; /* For FireFox and Opera */
+  display: inline-block; /* For Opera and IE */
+  width:100px;
+  vertical-align:top;
+}
+
+span.filterValues {
+  display: table-cell; /* For FireFox and Opera */
+  display: inline-block; /* For Opera and IE */
+  max-width:400px;
+  vertical-align:top;
+}
+
+span.filterValue {
+  font-size: 1.2em;
+  color:#4D4D4D;
+  cursor:pointer;
+  margin-right:7px;
+}
+
+span.selected {
+  background-color:#FFFFDD;
+  border-bottom:1px solid #EFEFEF;
+  border-top:1px solid #EFEFEF;
+}</code>
+</property>
+<property>
+<name></name>
+</property>
+<property>
+<parse>1</parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<content>{{velocity}}
+#set($ok = $xwiki.jsx.use('ReaderCode.TopFilters'))
+#set($ok = $xwiki.ssx.use('ReaderCode.TopFilters'))
+== Filters ==
+{{html}}
+&lt;div class="filters"&gt;
+&lt;div class="filter flag" id="flagfilter"&gt;
+  &lt;input name="flag" value="" type="hidden" class="value" /&gt;
+  &lt;input name="operator@flag" value="" type="hidden" class="operator" /&gt;
+  &lt;span class="filterLabel"&gt;Flags&lt;/span&gt;
+  &lt;span class="filterValues"&gt;
+    &lt;span class="filterValue exclusive"&gt;
+      flagged
+      &lt;span class="hidden"&gt;0&lt;/span&gt;
+      &lt;span class="hidden operator"&gt;gt&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class="filterValue exclusive"&gt;
+      not-flagged
+      &lt;span class="hidden"&gt;0&lt;/span&gt;
+      &lt;span class="hidden operator"&gt;le&lt;/span&gt;
+      &lt;img class="hidden" src="$xwiki.getDocument('ReaderCode.TopFilters').getAttachmentURL('starempty.png')" /&gt; 
+    &lt;/span&gt;
+#set($flagsQuery= $xwiki.queryManager.xwql("from doc.object(ReaderCode.FlagClass) as flag where doc.name&lt;&gt;'FlagTemplate' order by flag.key asc"))
+#foreach($flagName in $flagsQuery.execute())
+  #set($flagDoc = $xwiki.getDocument($flagName))
+  #set($flag = $flagDoc.getObject('ReaderCode.FlagClass'))
+  #set($iconURL = $xwiki.getSkinFile("icons/silk/${flag.get('icon')}.gif"))
+    &lt;span class="filterValue exclusive"&gt;
+      &lt;span class="hidden"&gt;$flag.get('key')&lt;/span&gt;
+      &lt;span class="hidden operator"&gt;eq&lt;/span&gt;
+      &lt;img src="$iconURL" title="$flag.get('label') : $flag.get('description')" alt="$flag.get('label')"/&gt;&lt;/span&gt;
+#end
+&lt;/div&gt;
+&lt;div class="filter read" id="readfilter"&gt;
+  &lt;input name="read" value="" type="hidden" class="value" /&gt;
+  &lt;input name="operator@read" value="" type="hidden" class="operator" /&gt;
+  &lt;span class="filterLabel"&gt;Read status&lt;/span&gt;
+  &lt;span class="filterValues"&gt;
+    &lt;span class="filterValue exclusive"&gt;
+    unread
+      &lt;span class="hidden"&gt;1&lt;/span&gt;
+      &lt;span class="hidden operator"&gt;ne&lt;/span&gt;
+    &lt;/span&gt;
+    &lt;span class="filterValue exclusive"&gt;
+    read
+      &lt;span class="hidden"&gt;1&lt;/span&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+#* Not supported yet
+&lt;div class="filter category" id="categoryfilter"&gt;
+  &lt;input name="category" value="" type="hidden"/&gt;
+  &lt;span class="filterLabel"&gt;Category&lt;/span&gt;
+  &lt;span class="filterValues&gt;
+    &lt;span class="filterValue"&gt;Competition&lt;span class="hidden"&gt;0&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="filterValue"&gt;Friends&lt;span class="hidden"&gt;1&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="filterValue"&gt;XWiki&lt;span class="hidden"&gt;1&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="filterValue"&gt;Wikis&lt;span class="hidden"&gt;0&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="filterValue"&gt;Social Software&lt;span class="hidden"&gt;1&lt;/span&gt;&lt;/span&gt;
+    &lt;span class="filterValue"&gt;CRM&lt;span class="hidden"&gt;1&lt;/span&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/div&gt;
+*#
+&lt;/div&gt;
+{{/html}}
+{{/velocity}}</content></xwikidoc>

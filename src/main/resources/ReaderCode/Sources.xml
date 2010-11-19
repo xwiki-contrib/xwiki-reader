@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xwikidoc>
+<web>ReaderCode</web>
+<name>Sources</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1271593821000</creationDate>
+<date>1273094652000</date>
+<contentUpdateDate>1273094652000</contentUpdateDate>
+<version>3.1</version>
+<title></title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>false</minorEdit>
+<syntaxId>xwiki/2.0</syntaxId>
+<hidden>false</hidden>
+<object>
+<class>
+<name>XWiki.JavaScriptExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>currentPage=Always on this page|onDemand=On demand|always=Always on this wiki</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>ReaderCode.Sources</name>
+<number>0</number>
+<className>XWiki.JavaScriptExtension</className>
+<guid>60b38cc7-462c-444a-9454-8e8ec2030502</guid>
+<property>
+<cache>default</cache>
+</property>
+<property>
+<code>document.observe("dom:loaded", function(){
+
+   // Hijack "add source" link to display the form inline when JS is available
+   if($('mainContentArea').down('a.addSourceFormToggle')) {
+     $('mainContentArea').down('a.addSourceFormToggle').observe('click', function(event){
+        event.stop(); // Prevent defaults
+        event.element().up('div').next().toggleClassName('hidden');
+     });
+   }
+
+   // Hijack the "cancel" button
+   if($('mainContentArea').down('div.source') &amp;&amp; $('mainContentArea').down('div.source').down('a.secondary')) {
+     $('mainContentArea').down('div.source').down('a.secondary').observe("click", function(event){
+       event.stop();
+       event.element().up('form').up('div').toggleClassName('hidden');
+     });
+   }
+
+});</code>
+</property>
+<property>
+<name></name>
+</property>
+<property>
+<parse>1</parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.StyleSheetExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>currentPage=Always on this page|onDemand=On demand|always=Always on this wiki</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>ReaderCode.Sources</name>
+<number>0</number>
+<className>XWiki.StyleSheetExtension</className>
+<guid>a8846587-1359-4906-ae2f-c786ce6f1ee7</guid>
+<property>
+<cache>default</cache>
+</property>
+<property>
+<code>#template('colorThemeInit.vm')
+
+.source .source-section {
+  margin: 1em 0;
+  padding: 8px 16px;
+  border: 1px solid $theme.backgroundSecondaryColor;
+}
+legend {
+  font-weight: bold;
+}
+legend.section-title {
+  color: $theme.titleColor;
+  padding: 2px 1em 2px 22px;
+  border: 1px solid $theme.backgroundSecondaryColor;
+  cursor: pointer;
+}
+.source label {
+  font-weight:bold;
+}
+
+.source-section input {
+  width:98%;
+}
+</code></property><property><name></name></property><property><parse>1</parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<content>{{velocity}}
+{{html wiki=true clean=false}}
+#set($ok = $xwiki.jsx.use('ReaderCode.Sources'))
+#set($query = ", BaseObject as obj, XWiki.AggregatorURLClass as feed where obj.name=doc.fullName and obj.className='XWiki.AggregatorURLClass' and obj.id=feed.id")
+#set($sources = $xwiki.searchDocuments($query))
+#if($sources.size()&gt;0)
+&lt;ul class="xlist"&gt;
+#foreach($feedDocumentName in $sources)
+&lt;li class="xitem xhighlight xunderline"&gt;
+&lt;img src="$xwiki.getSkinFile('icons/silk/bullet_feed.gif') "/&gt;
+#set($feedDoc = $xwiki.getDocument($feedDocumentName))
+&lt;a href="$feedDoc.getURL('view')"&gt;$feedDoc.getObject('XWiki.AggregatorURLClass').get('title')&lt;/a&gt;
+&lt;/li&gt;
+#end
+#if($hasAdmin)
+&lt;li class="xitem"&gt;
+  &lt;div&gt;
+    &lt;img src="$xwiki.getSkinFile('icons/silk/bullet_add.gif') "/&gt;
+    &lt;a href="$xwiki.getDocument('CreateSource').getURL('view')" class="addSourceFormToggle"&gt;
+    Create New Source
+    &lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="hidden"&gt;
+  {{include document="${doc.space}.AddSource" /}}
+  &lt;/div&gt;
+&lt;/li&gt;
+#end
+&lt;/ul&gt;
+#else
+{{info}}There are no source defined for this reader, yet. #if($hasAdmin)Why not add one, using the form below ?#end{{/info}}
+
+#if($hasAdmin)
+{{include document="${doc.space}.AddSource" /}}
+#end
+#end
+
+{{/html}}
+{{/velocity}}</content></xwikidoc>

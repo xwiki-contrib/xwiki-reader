@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xwikidoc>
+<web>ReaderCode</web>
+<name>ReaderArticlesMacro</name>
+<language></language>
+<defaultLanguage></defaultLanguage>
+<translation>0</translation>
+<parent></parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1271519474000</creationDate>
+<date>1288211682000</date>
+<contentUpdateDate>1288211682000</contentUpdateDate>
+<version>1.3</version>
+<title>Watch Articles Macro</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>true</minorEdit>
+<syntaxId>xwiki/2.0</syntaxId>
+<hidden>false</hidden>
+<object>
+<class>
+<name>XWiki.StyleSheetExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<disabled>0</disabled>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<disabled>0</disabled>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<disabled>0</disabled>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<disabled>0</disabled>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<disabled>0</disabled>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>currentPage=Always on this page|onDemand=On demand|always=Always on this wiki</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>ReaderCode.ReaderArticlesMacro</name>
+<number>0</number>
+<className>XWiki.StyleSheetExtension</className>
+<guid>67a48765-aa5c-4867-a344-12eecfc376df</guid>
+<property>
+<cache>default</cache>
+</property>
+<property>
+<code>ul.xlist li.readerEntry div.meta {
+  font-style:italic;
+  font-family: "Times New Roman", serif; /* FIXME find out why it's overriden by colibri.css */
+  font-size:0.9em;
+}
+
+ul.xlist li.readerEntry {
+  margin-bottom:5px;
+}
+
+ul.xlist li.readerEntry .head img {
+  margin-right:5px;
+}</code>
+</property>
+<property>
+<name></name>
+</property>
+<property>
+<parse>0</parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.WikiMacroClass</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<code>
+<disabled>0</disabled>
+<name>code</name>
+<number>9</number>
+<prettyName>Macro code</prettyName>
+<rows>20</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<contentDescription>
+<disabled>0</disabled>
+<name>contentDescription</name>
+<number>8</number>
+<prettyName>Content description (Not applicable for "No content" type)</prettyName>
+<rows>5</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</contentDescription>
+<contentType>
+<cache>0</cache>
+<disabled>0</disabled>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>contentType</name>
+<number>7</number>
+<prettyName>Macro content type</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator>|</separator>
+<separators>|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>Mandatory|Optional|No content</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</contentType>
+<defaultCategory>
+<disabled>0</disabled>
+<name>defaultCategory</name>
+<number>4</number>
+<prettyName>Default category</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</defaultCategory>
+<description>
+<disabled>0</disabled>
+<name>description</name>
+<number>3</number>
+<prettyName>Macro description</prettyName>
+<rows>5</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</description>
+<id>
+<disabled>0</disabled>
+<name>id</name>
+<number>1</number>
+<prettyName>Macro id</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</id>
+<name>
+<disabled>0</disabled>
+<name>name</name>
+<number>2</number>
+<prettyName>Macro name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<supportsInlineMode>
+<disabled>0</disabled>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>supportsInlineMode</name>
+<number>5</number>
+<prettyName>Supports inline mode</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</supportsInlineMode>
+<visibility>
+<cache>0</cache>
+<disabled>0</disabled>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>visibility</name>
+<number>6</number>
+<prettyName>Macro visibility</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator>|</separator>
+<separators>|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>Current User|Current Wiki|Global</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</visibility>
+</class>
+<name>ReaderCode.ReaderArticlesMacro</name>
+<number>0</number>
+<className>XWiki.WikiMacroClass</className>
+<guid>ed96b086-841d-457e-ad82-d91b5f5d787f</guid>
+<property>
+<code>{{velocity}}
+{{html wiki=true}}
+#set($ok = $xwiki.ssx.use('ReaderCode.ReaderArticlesMacro'))
+#if("${context.macro.params.limit}" != '' &amp;&amp; $mathtool.toInteger($context.macro.params.limit))
+  #set($limit = $mathtool.toInteger($context.macro.params.limit))
+#else
+  #set($limit = 5)
+#end
+#if("${context.macro.params.displayFlags}" == 'true') #set($displayFlags = true) #else #set($displayFlags = false) #end
+#set($queryFrom = ", BaseObject as obj, XWiki.FeedEntryClass as entry")
+#set($queryWhere = "where doc.fullName=obj.name and obj.className='XWiki.FeedEntryClass' and obj.id=entry.id")
+#set($queryOrder = " order by doc.creationDate desc")
+#if("${context.macro.params.flag}" != '')
+  #if("${context.macro.params.flag}" == 'any' || "${context.macro.params.flag}" == '*')
+    #set($queryWhere = "$queryWhere and entry.flag&gt;0")
+  #elseif($mathtool.toInteger("${context.macro.params.flag}"))
+    #set($queryWhere = "$queryWhere and entry.flag=${context.macro.params.flag}")
+  #end
+#end
+#set($query = "${queryFrom} ${queryWhere} ${queryOrder}")
+#set($articles = $xwiki.searchDocuments($query, $limit, 0))
+&lt;ul class="xlist xhighlight"&gt;
+#foreach($article in $articles)
+#set($articleDoc=$xwiki.getDocument($article))
+#set($feedEntry = $articleDoc.getObject('XWiki.FeedEntryClass'))
+&lt;li class="xitem readerEntry"&gt;
+&lt;div class="head"&gt;
+#if($displayFlags &amp;&amp; $feedEntry.getProperty('flag').value &gt; 0)
+#set($flag = $feedEntry.getProperty('flag').value)
+#set($flagQuery = ", BaseObject as flag, LongProperty as fkey where flag.className='ReaderCode.FlagClass' and flag.name=doc.fullName and flag.id=fkey.id.id and fkey.id.name='key' and fkey.value = '$flag'")
+#foreach($flagDocumentName in $xwiki.searchDocuments($flagQuery))
+ #set($docName = $flagDocumentName)
+ #set($icon=$xwiki.getDocument($flagDocumentName).getObject('ReaderCode.FlagClass').getProperty('icon').value)
+ #set($iconURL=$xwiki.getSkinFile("icons/silk/${icon}.gif"))
+ #break
+#end
+&lt;span class="flag"&gt;&lt;img src="$!iconURL" /&gt;&lt;/span&gt;
+#elseif($displayFlags) 
+&lt;span class="flag"&gt;&lt;img src="$xwiki.getSkinFile('icons/silk/bullet_white.gif')" /&gt;&lt;/span&gt;
+#end
+&lt;a href="$articleDoc.getURL('view')"&gt;$articleDoc.display('title', $feedEntry)&lt;/a&gt;
+&lt;/div&gt;
+&lt;div class="meta" style="font-family:serif"&gt;
+#set($feedName = '')
+#set($feedUrl = '')
+#foreach($feedDocumentName in $xwiki.searchDocuments(", BaseObject as obj, XWiki.AggregatorURLClass as feed where obj.name=doc.fullName and obj.className='XWiki.AggregatorURLClass' and feed.id=obj.id and doc.name='$feedEntry.getProperty('feedname').value'"))
+  #set($feedName = $xwiki.getDocument($feedDocumentName).getObject('XWiki.AggregatorURLClass').getProperty('name').value)
+  #set($feedUrl = $feedDocumentName)
+#end
+#if($feedName == '') #set($feedName = $feedEntry.getProperty('feedname').value) #end
+#if($feedUrl == '') #set($feedUrl = $feedEntry.getProperty('feedurl').value) #end
+From [[$feedName&gt;&gt;$feedUrl]]
+{{timeAgo}}$articleDoc.creationDate.time{{/timeAgo}}
+&lt;/div&gt;
+&lt;/li&gt;
+#end
+&lt;/ul&gt;
+{{/html}}
+{{/velocity}}</code>
+</property>
+<property>
+<contentDescription>Displays a list of reader articles</contentDescription>
+</property>
+<property>
+<contentType></contentType>
+</property>
+<property>
+<defaultCategory></defaultCategory>
+</property>
+<property>
+<description></description>
+</property>
+<property>
+<id>readerArticles</id>
+</property>
+<property>
+<name>Reader Articles</name>
+</property>
+<property>
+<supportsInlineMode>0</supportsInlineMode>
+</property>
+<property>
+<visibility>Current Wiki</visibility>
+</property>
+</object>
+<content>== Articles ==
+
+{{code}}
+{{readerArticles limit=3 /}}
+{{/code}}
+
+{{readerArticles limit=3 /}}
+
+== Articles with flags displayed ==
+
+{{code}}
+{{readerArticles displayFlags='true'/}}
+{{/code}}
+
+{{readerArticles displayFlags='true'/}}
+
+== Articles with any flag ==
+
+{{code}}
+{{readerArticles displayFlags='true' flag='any'/}}
+{{/code}}
+
+{{readerArticles displayFlags='true' flag='any'/}}</content></xwikidoc>
