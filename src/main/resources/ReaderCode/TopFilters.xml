@@ -141,9 +141,9 @@ cZla2Iz0ww+xrypQORSlAUSkzsVr7zOAupGZl6KqQtMbfAOQOZKBO2QBeKnzGQiwgncbBDbIA4jM
 <code>(function(XWiki) { 
 
     // Sub-module creation, if needed
-    var cww = XWiki.cww = XWiki.cww || {}; 
+    var reader = XWiki.reader = XWiki.reader || {}; 
 
-    cww.Filter = Class.create({
+    reader.Filter = Class.create({
       initialize:function(elem, value, operator){
         this.container = $(elem);
         this.input = this.container.down("input[type='hidden'].value"); // The actual livetable filter
@@ -195,7 +195,7 @@ cZla2Iz0ww+xrypQORSlAUSkzsVr7zOAupGZl6KqQtMbfAOQOZKBO2QBeKnzGQiwgncbBDbIA4jM
         else {
           // Not supported for the moment.
         }
-        target.fire("xwiki:livetable:cwwreader:filtersChanged");
+        target.fire("xwiki:livetable:reader:filtersChanged");
       }
       
     });
@@ -211,7 +211,7 @@ document.observe("dom:loaded", function(){
     var tables = hashString.split("|");
     for (var i=0;i&lt;tables.length;i++) {
       var params = tables[i].toQueryParams();
-      if (params["t"] == 'cwwreader') { // that's our table !
+      if (params["t"] == 'reader') { // that's our table !
         var parameterNames = Object.keys(params), result = new Object();
         for (var j=0;j&lt;parameterNames.length;j++) {
           filters[parameterNames[j]] = params[parameterNames[j]];
@@ -221,8 +221,8 @@ document.observe("dom:loaded", function(){
     }
   }
 
-  new XWiki.cww.Filter($('readfilter'), filters['read'], filters['operator@read']);   
-  new XWiki.cww.Filter($('flagfilter'), filters['flag'], filters['operator@flag']);
+  new XWiki.reader.Filter($('readfilter'), filters['read'], filters['operator@read']);   
+  new XWiki.reader.Filter($('flagfilter'), filters['flag'], filters['operator@flag']);
 });</code>
 </property>
 <property>

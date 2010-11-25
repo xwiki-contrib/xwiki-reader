@@ -45,14 +45,14 @@
 #set($filters = "#includeTopic('ReaderCode.TopFilters')")
 #set($options = { "selectedColumn" : "date"
                  ,"defaultOrder" : "desc"
-                 ,"translationPrefix" : "cww.reader."
-                 ,"rowCount": 15
+                 ,"translationPrefix" : "reader."
+                 ,"rowCount": 30
                  ,"tagCloud" : true
                  ,"resultPage" : "ReaderCode.FeedReaderLiveTableResults"
                  ,"className" : "XWiki.FeedEntryClass"
                  ,"extraParams" : "space=$doc.space&amp;feed=${feedName}"
                  ,"description": "Collaborative Web Watch Articles" 
                  ,"topFilters":  "$filters" })
-#livetable("cwwreader" $collist $colprops $options)
+#livetable("reader" $collist $colprops $options)
 #end ## is a feed document
 {{/velocity}}</content></xwikidoc>
