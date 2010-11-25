@@ -29,9 +29,9 @@
     <artifactId>xwiki-applications</artifactId>
     <version>27</version>
   </parent>
-  <groupId>com.xwiki.applications</groupId>
+  <groupId>org.xwiki.contrib</groupId>
   <artifactId>xwiki-application-reader</artifactId>
-  <name>XWiki.com - Applications - Reader</name>
+  <name>XWiki - Applications - Reader</name>
   <description>A Collaborative Web Reader for watch teams</description>
   <version>1.0-SNAPSHOT</version>
   <packaging>xar</packaging>
@@ -44,7 +44,7 @@
     <repository>
       <id>xwiki-staging</id>
       <name>XWiki Staging Repository</name>
-      <url>http://nexus.xwiki.org/nexus/service/local/staging/deploy/maven2/</url>
+      <url>http://nexus.xwiki.org/nexus/service/local/staging/deploy/maven2</url>
     </repository>
   </distributionManagement>
   <dependencies>
