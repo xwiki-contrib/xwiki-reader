@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xwikidoc>
-<web>WatchSheets</web>
+<web>ReaderCode</web>
 <name>FeedArticleSheet</name>
 <language></language>
 <defaultLanguage></defaultLanguage>
 <translation>1</translation>
-<parent></parent>
+<parent>ReaderCode.WebHome</parent>
 <creator>XWiki.Admin</creator>
 <author>XWiki.Admin</author>
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1194369595000</creationDate>
-<date>1276120820000</date>
-<contentUpdateDate>1276120820000</contentUpdateDate>
-<version>3.1</version>
+<date>1290699075000</date>
+<contentUpdateDate>1290699075000</contentUpdateDate>
+<version>1.1</version>
 <title></title>
 <template></template>
 <defaultTemplate></defaultTemplate>
@@ -34,6 +34,7 @@
 <validationScript></validationScript>
 <tags>
 <cache>0</cache>
+<disabled>0</disabled>
 <displayType>input</displayType>
 <multiSelect>1</multiSelect>
 <name>tags</name>
@@ -48,10 +49,10 @@
 <classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
 </tags>
 </class>
-<name>WatchSheets.FeedArticleSheet</name>
+<name>ReaderCode.FeedArticleSheet</name>
 <number>0</number>
 <className>XWiki.TagClass</className>
-<guid>80b05f1b-06b2-4d75-a39b-6838dd567bbd</guid>
+<guid>59ce841a-ea07-4640-9d68-11b68db59d17</guid>
 <property>
 <tags/>
 </property>
@@ -70,15 +71,18 @@
   #set($flaggedClass = "flagged")
 #end
 #set($feedname = $feedArticle.getProperty("feedname").value)
-##get the parent aggregator document -&gt; match for feedname
-##TODO: change this into $doc.parent once the feed plugin is set to put each feed article as a child of its aggregator
-#set($parentFeedSql = ", BaseObject as obj, XWiki.AggregatorURLClass as aggr where obj.id=aggr.id.id and aggr.name='${feedname}' and obj.name=doc.fullName")
-##set($parentFeedSql = ", BaseObject obj, StringProperty prop where doc.fullName = obj.name and obj.className = 'XWiki.AggregatorURLClass' and prop.id.id = obj.id and prop.id.name = 'name' and prop.value='$feedname'")
-#set($resultsList = $xwiki.searchDocuments($parentFeedSql))
-#set($parentDoc = false)
-#if ($resultsList.size() &gt; 0)
-  #set($parentDocName = $resultsList.get(0))
-  #set($parentDoc = $xwiki.getDocument($parentDocName))
+#if($doc.parent != '')
+  #set($parentDoc = $xwiki.getDocument($doc.parent))
+#else
+  ## XWiki version is less than 2.7
+  ##get the parent aggregator document -&gt; match for feedname 
+  #set($parentFeedSql = ", BaseObject as obj, XWiki.AggregatorURLClass as aggr where obj.id=aggr.id.id and aggr.name='${feedname}' and obj.name=doc.fullName")
+  #set($resultsList = $xwiki.searchDocuments($parentFeedSql))
+  #set($parentDoc = false)
+  #if ($resultsList.size() &gt; 0)
+    #set($parentDocName = $resultsList.get(0))
+    #set($parentDoc = $xwiki.getDocument($parentDocName))
+  #end
 #end
 #set($feedtitle = $parentDoc.getValue("title"))
 &lt;div class="article ${readClass} ${flaggedClass}"&gt;
@@ -94,20 +98,17 @@
   #end 
   {{html wiki="false"}}&lt;span&gt;RSS Feed &lt;a href="$aggregatorURL"&gt;&lt;img src="$xwiki.getSkinFile('icons/black-rss-mini3.png')" /&gt;&lt;/a&gt;&lt;/span&gt; {{/html}}
   &lt;/div&gt;
-  &lt;h2 class="heading-1"&gt;&lt;a href="{{html wiki='false'}}$feedArticle.getProperty("url").value{{/html}}"&gt;$feedArticle.title&lt;/a&gt;&lt;/h2&gt;
   #message("By &lt;span&gt;${feedArticle.author}&lt;/span&gt; on &lt;span&gt;${feedArticle.date}&lt;/span&gt;")
   ## get the tags and display them, with links to the tags sheet
-  #set($tags = $feedArticle.tags)
-  #set($feedClass = $feedArticle.xWikiClass)
-  #set($tagsSeparators = $feedClass.get("tags").getProperty("separator").value)
-  #set($tagsList = $xwiki.split($tags, $tagsSeparators))
+  #set($tags = $doc.getObject("XWiki.TagClass"))
+  #set($tagsList = $doc.tags.split("[|]"))
   #set($any = false)
   #foreach($tag in $tagsList)
     #if (!$any)
       #set($any = true)
       &lt;ul class="tags" style="list-style: none; display: table; padding: 0px;"&gt;
     #end
-    &lt;li style="margin: 0px; padding-right: 10px; display: table-cell;"&gt;&lt;a href="$xwiki.getURL("WatchSheets.TagsSheet", "view", "&amp;amp;tag=${tag}")" style="display: block;"&gt;${tag}&lt;/a&gt;&lt;/li&gt;
+    &lt;li style="padding-left:22px; margin: 0px; padding-right: 10px; display: table-cell; background: url($xwiki.getSkinFile('icons/silk/tag_yellow.gif')) no-repeat 2px 3px ;"&gt;&lt;a href="$xwiki.getURL("Main.Tags", "view", "do=viewTag&amp;amp;tag=${tag}")" style="display: block;"&gt;${tag}&lt;/a&gt;&lt;/li&gt; 
   #end
   #if ($any)
     &lt;/ul&gt;
