@@ -27,7 +27,7 @@
   <parent>
     <groupId>org.xwiki.platform.applications</groupId>
     <artifactId>xwiki-applications</artifactId>
-    <version>28-SNAPSHOT</version>
+    <version>27</version>
   </parent>
   <groupId>com.xwiki.applications</groupId>
   <artifactId>xwiki-application-reader</artifactId>
