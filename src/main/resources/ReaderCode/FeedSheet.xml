@@ -11,8 +11,8 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1271598590000</creationDate>
-<date>1290776430000</date>
-<contentUpdateDate>1290776430000</contentUpdateDate>
+<date>1290794875000</date>
+<contentUpdateDate>1290794875000</contentUpdateDate>
 <version>1.1</version>
 <title></title>
 <template></template>
@@ -27,6 +27,17 @@
 #if(!$feed)
 {{warning}}This sheet must be applied to a feed document{{/warning}}
 #else
+#if($xcontext.action == 'inline')
+
+{{include document="ReaderCode.SourceEditSheet" /}}
+
+#else
+#if("${request.forceUpdate}" != '' &amp;&amp; "${request.forceUpdate}" != 'ok')
+
+{{warning}}$msg.get("reader.feedPage.loading.${request.forceUpdate}"){{/warning}}
+
+#end
+
 [[See the original feed image:icon:feed_go&gt;&gt;$feed.url||target="__blank"]]
 
 (% class="maximizable" %) (((
@@ -59,5 +70,6 @@
                  ,"topFilters":  "$filters" })
 #livetable("reader" $collist $colprops $options)
 )))
+#end ## is !inline mode
 #end ## is a feed document
 {{/velocity}}</content></xwikidoc>
