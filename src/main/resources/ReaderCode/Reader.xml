@@ -11,15 +11,15 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1270831810000</creationDate>
-<date>1290777322000</date>
-<contentUpdateDate>1290777322000</contentUpdateDate>
-<version>1.1</version>
+<date>1290797600000</date>
+<contentUpdateDate>1290797600000</contentUpdateDate>
+<version>2.1</version>
 <title></title>
 <template></template>
 <defaultTemplate></defaultTemplate>
 <validationScript></validationScript>
 <comment></comment>
-<minorEdit>true</minorEdit>
+<minorEdit>false</minorEdit>
 <syntaxId>xwiki/2.0</syntaxId>
 <hidden>false</hidden><attachment>
 <filename>filter.png</filename>
@@ -664,9 +664,12 @@ tbody.xwiki-livetable-display-body tr.unread div.title {
 tbody.xwiki-livetable-display-body tr.read div.title,
 tbody.xwiki-livetable-display-body tr.read div.cellWrapper {
   background-color:#FDFDFD;
-  background-image:-moz-linear-gradient(center top , #FFFFFF, #FAFAFA);
   font-weight:normal;
   color:#667;
+  background-image: -moz-linear-gradient(top, #FFFFFF, #FAFAFA); /* FF3.5+ */
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #FFFFFF),color-stop(1, #FAFAFA)); /* Saf4+, Chrome */
+  filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#FFFFFF', EndColorStr='#FAFAFA')"; /* IE6,IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#FFFFFF', EndColorStr='#FAFAFA')"; /* IE8 */
 }
 
 div.fullScreenWrapper {
