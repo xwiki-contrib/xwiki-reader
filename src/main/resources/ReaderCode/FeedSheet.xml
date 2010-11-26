@@ -60,7 +60,7 @@
 #set($filters = "#includeTopic('ReaderCode.TopFilters')")
 #set($options = { "selectedColumn" : "date"
                  ,"defaultOrder" : "desc"
-                 ,"translationPrefix" : "reader."
+                 ,"translationPrefix" : "reader.stream."
                  ,"rowCount": 30
                  ,"tagCloud" : true
                  ,"resultPage" : "ReaderCode.FeedReaderLiveTableResults"
