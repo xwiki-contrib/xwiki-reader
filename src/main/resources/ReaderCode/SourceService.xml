@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xwikidoc>
+<web>ReaderCode</web>
+<name>SourceService</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>ReaderCode.WebHome</parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1290796354000</creationDate>
+<date>1290862487000</date>
+<contentUpdateDate>1290862487000</contentUpdateDate>
+<version>4.3</version>
+<title>JSON Service that gives information about a feed URL</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>true</minorEdit>
+<syntaxId>xwiki/2.0</syntaxId>
+<hidden>false</hidden>
+<content>{{velocity}}
+#if("$!request.xpage" == 'plain' &amp;&amp; "$!request.outputSyntax" == 'plain')
+## 
+## Service that tries to get a feed title
+#if("$!request.url" != '')
+#set($feed = $xwiki.feed.getFeed($request.url))
+  #if($feed)
+$response.setStatus(200)
+$response.setContentType("application/json")
+  {
+    'title' : "$escapetool.javascript($feed.title)"
+  }
+  #else
+$response.setStatus(404)
+  #end
+#else
+$response.setStatus(400)
+#end
+#else
+{{info}}This is a service document{{/info}}
+
+#end
+{{/velocity}}</content></xwikidoc>

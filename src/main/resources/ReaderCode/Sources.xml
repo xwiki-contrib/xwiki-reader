@@ -11,9 +11,9 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1271593821000</creationDate>
-<date>1290793291000</date>
-<contentUpdateDate>1290793291000</contentUpdateDate>
-<version>1.1</version>
+<date>1290864219000</date>
+<contentUpdateDate>1290864219000</contentUpdateDate>
+<version>2.29</version>
 <title></title>
 <template></template>
 <defaultTemplate></defaultTemplate>
@@ -119,6 +119,43 @@
        event.element().up('form').up('div').toggleClassName('hidden');
      });
    }
+
+   var lookupTitle = function() {
+     if ($F('XWiki.AggregatorURLClass_0_url') &amp;&amp; $F('XWiki.AggregatorURLClass_0_url').trim().match(/^(http|https):\/\/(([A-Z0-9][A-Z0-9_-]*)(\.[A-Z0-9][A-Z0-9_-]*)+)(:(\d+))?\/?/i)) {
+       $('sourceTitle').value = '';
+       $('sourceTitle').disable();
+       $('sourceTitle').addClassName('loading');
+       if ($('sourceTitle').up('dd').down('span.warningmessage')) {
+         $('sourceTitle').up('dd').down('span.warningmessage').remove();
+       }
+       var ajx = new Ajax.Request("$xwiki.getURL('ReaderCode.SourceService', 'view','ajax=1')",{
+          method:'post',
+          parameters: {
+             'url' : $F('XWiki.AggregatorURLClass_0_url'),
+             'xpage': 'plain',
+             'outputSyntax' : 'plain'
+          },
+          onComplete: function(response) {
+            if (response.status != 200) {
+              var warningMessage = new Element('span', {'class': 'box warningmessage'}).update('I could not find a title for this feed. Is the URL correct ?')
+              $('sourceTitle').up('dd').insert(warningMessage);
+            }
+            else {
+              $('sourceTitle').value = response.responseJSON.title;
+            }
+            $('sourceTitle').removeClassName('loading');
+            $('sourceTitle').enable();
+            $('sourceTitle').focus();
+          }
+       })
+     }
+   };
+
+   if($('XWiki.AggregatorURLClass_0_url')) {
+      $('XWiki.AggregatorURLClass_0_url').observe('blur', lookupTitle);
+   }
+
+   lookupTitle(); // In case of refresh and value is cached.
 
 });</code>
 </property>
