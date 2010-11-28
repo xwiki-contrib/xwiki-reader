@@ -11,9 +11,9 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1271598590000</creationDate>
-<date>1290794875000</date>
-<contentUpdateDate>1290794875000</contentUpdateDate>
-<version>1.1</version>
+<date>1290958094000</date>
+<contentUpdateDate>1290958094000</contentUpdateDate>
+<version>1.2</version>
 <title></title>
 <template></template>
 <defaultTemplate></defaultTemplate>
@@ -32,7 +32,7 @@
 {{include document="ReaderCode.SourceEditSheet" /}}
 
 #else
-#if("${request.forceUpdate}" != '' &amp;&amp; "${request.forceUpdate}" != 'ok')
+#if("$!{request.forceUpdate}" != '' &amp;&amp; "${request.forceUpdate}" != 'ok')
 
 {{warning}}$msg.get("reader.feedPage.loading.${request.forceUpdate}"){{/warning}}
 
