@@ -11,8 +11,8 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1271598590000</creationDate>
-<date>1290958094000</date>
-<contentUpdateDate>1290958094000</contentUpdateDate>
+<date>1290979324000</date>
+<contentUpdateDate>1290979324000</contentUpdateDate>
 <version>1.2</version>
 <title></title>
 <template></template>
@@ -46,7 +46,7 @@
 #set($ok = $xwiki.ssfx.use('uicomponents/widgets/fullScreen.css', true))
 #set($ok = $xwiki.jsx.use('ReaderCode.Reader'))
 #set($ok = $xwiki.ssx.use('ReaderCode.Reader'))
-#set($collist = ["flag", "read", "title", "content", "doc.creationDate", "category", "author", "feedname", "feedurl"])
+#set($collist = ["flag", "read", "title", "content", "date", "category", "author", "feedname", "feedurl"])
 #set($colprops = { "flag" : {"headerClass" : "flag"}
                   ,"read": {"type" : "hidden"}
                   ,"content" : { "type" : "hidden"}
@@ -55,7 +55,7 @@
                   ,"feedname" : {"type" : "hidden"}
                   ,"feedurl" : {"type" : "hidden"}
                   ,"title" : { "type" : "text" , "size" : 30, "headerClass" : "entryTitle"}
-                  ,"doc.creationDate" : { "type" : "date", "link" : "none", "headerClass" : "date" }
+                  ,"date" : { "type" : "date", "link" : "none", "headerClass" : "date" }
                  })
 #set($filters = "#includeTopic('ReaderCode.TopFilters')")
 #set($options = { "selectedColumn" : "date"
