@@ -11,15 +11,15 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1290871963000</creationDate>
-<date>1290959292000</date>
-<contentUpdateDate>1290959292000</contentUpdateDate>
-<version>12.1</version>
+<date>1290976636000</date>
+<contentUpdateDate>1290976636000</contentUpdateDate>
+<version>1.24</version>
 <title></title>
 <template></template>
 <defaultTemplate></defaultTemplate>
 <validationScript></validationScript>
 <comment></comment>
-<minorEdit>false</minorEdit>
+<minorEdit>true</minorEdit>
 <syntaxId>xwiki/2.0</syntaxId>
 <hidden>false</hidden><attachment>
 <filename>opml-0.3-SNAPSHOT.jar</filename>
@@ -561,7 +561,9 @@ b3BtbC9wb20ucHJvcGVydGllc1BLBQYAAAAAHQAdAC0JAABsWAAAAAA=
     },
     check:function(elem){
       elem = $(elem);
-      elem.checked = true;
+      if (!elem.up('.alreadyExists')) {
+        elem.checked = true;
+      }
       return elem;
     }
   });
@@ -693,6 +695,10 @@ form.xform li.importItem {
   background: url("$xwiki.getSkinFile('icons/silk/bullet_feed.gif')") no-repeat 2px 5px;
 }
 
+form.xform li.alreadyExists input[type="text"] {
+  color:lightGrey;
+}
+
 form.xform div.buttonwrapper {
   margin-top:15px;
   display:block;
@@ -735,6 +741,7 @@ import java.net.URL
 */
 
 def currentTag = ''
+def existingSourceUrls = []
 
 def escapeLtGt = {
   return it.replaceAll('&lt;', '&amp;lt;').replaceAll('&gt;', '&amp;gt;')
@@ -748,21 +755,38 @@ def outputOutline = { outline, isChild -&gt;
   }
   if (outline.xmlUrl != '' &amp;&amp; outline.xmlUrl) {
     def wouldBeDoc = xwiki.getDocument(xwiki.getUniquePageName(doc.space, outline.title))
-    println """
-    &lt;li class="xitem importItem"&gt;
-      &lt;div class="xitemcontainer"&gt;
-        &lt;input type="checkbox" name="selected" value="${wouldBeDoc.name}" checked="checked" /&gt;
-        &lt;input type="text" name="url_${wouldBeDoc.name}" value="${outline.xmlUrl}" /&gt;
-        &lt;input type="text" name="title_${wouldBeDoc.name}" value="${escapeLtGt(outline.title)}" /&gt;
-    """
-    if (currentTag != '') {
-       // TODO display tag edit UI when aggregators support tags in the reader.
-       // println """&lt;span class="tag"&gt;${currentTag}&lt;/span&gt;"""
+    if(!existingSourceUrls.contains(outline.xmlUrl.trim())) {
+      println """
+      &lt;li class="xitem importItem"&gt;
+        &lt;div class="xitemcontainer"&gt;
+          &lt;input type="checkbox" name="selected" value="${wouldBeDoc.name}" checked="checked" /&gt;
+          &lt;input type="text" name="url_${wouldBeDoc.name}" value="${outline.xmlUrl}" /&gt;
+          &lt;input type="text" name="title_${wouldBeDoc.name}" value="${escapeLtGt(outline.title)}" /&gt;
+      """
+      if (currentTag != '') {
+         // TODO display tag edit UI when aggregators support tags in the reader.
+         // println """&lt;span class="tag"&gt;${currentTag}&lt;/span&gt;"""
+      }
+      println """
+        &lt;/div&gt;
+      &lt;/li&gt;
+      """
+    } else {
+      println"""
+      &lt;li class="xitem importItem alreadyExists"&gt;
+        &lt;div class="xitemcontainer"&gt;
+          &lt;div&gt;
+            &lt;span class="warningmessage box"&gt;${msg.get('reader.opmlImport.sourceAlreadyExists')}&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;input type="checkbox" name="selected" value="${wouldBeDoc.name}" disabled="disabled" /&gt;
+            &lt;input type="text" name="url_${wouldBeDoc.name}" value="${outline.xmlUrl}" disabled="disabled" /&gt;
+            &lt;input type="text" name="title_${wouldBeDoc.name}" value="${escapeLtGt(outline.title)}" disabled="disabled" /&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/li&gt;
+      """
     }
-    println """
-      &lt;/div&gt;
-    &lt;/li&gt;
-    """
   }
 }
 
@@ -785,6 +809,7 @@ if (request.xaction &amp;&amp; request.xaction == 'importOpml') {
       source.set('title', title)
       // Duplicate name in source object
       source.set('name', document.name)
+      source.set('url', url)
       document.save(msg.get('reader.versionSummary.sourceCreatedFromOpml'))
       println """* [[{{{${title}}}}&gt;&gt;${document.name}]]"""
     }
@@ -802,6 +827,8 @@ else if (request.import_file &amp;&amp; request.import_file != '') {
   FeedParsers.metaClass.getParserFor = { -&gt;
     return new OPML10Parser();
   }
+
+  existingSourceUrls = xwiki.search("select distinct source.url from BaseObject as obj, XWiki.AggregatorURLClass as source where obj.className='XWiki.AggregatorURLClass' and obj.id=source.id")
 
   println """
 
@@ -833,6 +860,7 @@ else if (request.import_file &amp;&amp; request.import_file != '') {
 
     """
   } catch(Exception e) {
+e.printStackTrace();
     println """{{/html}}
 
 {{error}}${msg.get('reader.opmImport.failedToLoadFile', [e.message])}{{/error}}"""
