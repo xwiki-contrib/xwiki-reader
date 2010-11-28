@@ -653,7 +653,7 @@ thead.xwiki-livetable-display-header th.entryTitle {
   width:100%;
 }
 tbody.xwiki-livetable-display-body td.flag,
-tbody.xwiki-livetable-display-body td.doc_creationDate {
+tbody.xwiki-livetable-display-body td.date {
   vertical-align:top;
 }
 
