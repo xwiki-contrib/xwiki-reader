@@ -11,15 +11,15 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1271519474000</creationDate>
-<date>1290701175000</date>
-<contentUpdateDate>1290701175000</contentUpdateDate>
-<version>2.1</version>
+<date>1290991121000</date>
+<contentUpdateDate>1290991121000</contentUpdateDate>
+<version>1.2</version>
 <title>Reader Articles Macro</title>
 <template></template>
 <defaultTemplate></defaultTemplate>
 <validationScript></validationScript>
 <comment></comment>
-<minorEdit>false</minorEdit>
+<minorEdit>true</minorEdit>
 <syntaxId>xwiki/2.0</syntaxId>
 <hidden>false</hidden>
 <object>
@@ -288,12 +288,13 @@ ul.xlist li.readerEntry .head img {
 #set($feedName = '')
 #set($feedUrl = '')
 #foreach($feedDocumentName in $xwiki.searchDocuments(", BaseObject as obj, XWiki.AggregatorURLClass as feed where obj.name=doc.fullName and obj.className='XWiki.AggregatorURLClass' and feed.id=obj.id and doc.name='$feedEntry.getProperty('feedname').value'"))
-  #set($feedName = $xwiki.getDocument($feedDocumentName).getObject('XWiki.AggregatorURLClass').getProperty('name').value)
+  #set($feedDocument = $xwiki.getDocument($feedDocumentName))
+  #set($feedName = $feedDocument.getObject('XWiki.AggregatorURLClass').getProperty('name').value)
   #set($feedUrl = $feedDocumentName)
 #end
 #if($feedName == '') #set($feedName = $feedEntry.getProperty('feedname').value) #end
 #if($feedUrl == '') #set($feedUrl = $feedEntry.getProperty('feedurl').value) #end
-From [[$feedName&gt;&gt;$feedUrl]]
+From [[$feedDocument.displayTitle&gt;&gt;$feedUrl]]
 {{timeAgo}}$articleDoc.creationDate.time{{/timeAgo}}
 &lt;/div&gt;
 &lt;/li&gt;
