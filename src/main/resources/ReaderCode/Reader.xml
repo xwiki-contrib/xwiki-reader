@@ -11,9 +11,9 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1270831810000</creationDate>
-<date>1290979298000</date>
-<contentUpdateDate>1290979298000</contentUpdateDate>
-<version>1.7</version>
+<date>1290989511000</date>
+<contentUpdateDate>1290989511000</contentUpdateDate>
+<version>1.21</version>
 <title></title>
 <template></template>
 <defaultTemplate></defaultTemplate>
@@ -277,10 +277,13 @@ sLNrIAE53U4Rbsy6LQAAAABJRU5ErkJggg==
       },
 
       createContentCell : function() {
-	    // Wrap content in a div
-	    var newContent = new Element('div', {'class':'title'}).update(this.contentCell.innerHTML.stripTags()).observe('click', this.itemTitleClicked.bindAsEventListener(this));
-	    this.contentCell.update(newContent);
-	    // Enrich content in an hidden div
+	// Wrap content in a div
+	var newContent = new Element('div', {'class':'title'})
+            .insert( new Element("span", {'class':'entrySource'}).update(this.data.doc_parent_title) )
+            .insert( new Element("span", {'class':'entryTitle'}).update(this.contentCell.innerHTML.stripTags()))
+            .observe('click', this.itemTitleClicked.bindAsEventListener(this));
+	this.contentCell.update(newContent);
+	// Enrich content in an hidden div
         var annotationNb = Object.keys(this.data.doc_annotations).length;
         var commentNb = Object.keys(this.data.doc_comments).length;
         var totalReviews = annotationNb + commentNb;
@@ -289,19 +292,19 @@ sLNrIAE53U4Rbsy6LQAAAABJRU5ErkJggg==
           .insert(
             new Element("div", { "class" : "entryTitle"})
             .insert( 
-	          new Element("a", {'href':this.data.doc_url}).update(this.data.title)
-	        )
-	      )
-	      .insert(
+	      new Element("a", {'href':this.data.doc_url}).update(this.data.title)
+            )
+	  )
+	  .insert(
             new Element("div", { "class" : "meta"})
             .insert(new Element("span", {'class':'author'}).update( "By &lt;span class='fn'&gt;" + this.data.author + "&lt;/span&gt;"))
-            .insert(new Element("span", {'class':'feed'}).update( " From &lt;a class='source' href='" + this.data.feedurl+ "'&gt;"
-                                                                 + this.data.feedname + "&lt;/a&gt;"))
+            .insert(new Element("span", {'class':'feed'}).update( " From &lt;a class='source' href='" + this.data.doc_parent_url + "'&gt;"
+                                                                 + this.data.doc_parent_title + "&lt;/a&gt;"))
             .insert(this.data.category == '' ? '' :
-                new Element("span", {'class':'category'}).update( " In " + this.data.category))
+              new Element("span", {'class':'category'}).update( " In " + this.data.category))
           )
           .insert(
-            new Element("div", {'class':'content'}).update(this.data.content)
+              new Element("div", {'class':'content'}).update(this.data.content)
           )
         this.contentCell.insert(entryDiv);
         this.reviewThread = new XWiki.ReviewThread(this.data.doc_comments, {
@@ -554,6 +557,16 @@ div.entry div.entryTitle {
   margin-top:10px;	
 }
 
+div.title span.entrySource {
+  white-space:nowrap;
+  width:13.5em;
+  overflow:hidden;
+  position:absolute;
+}
+div.title span.entryTitle {
+  position:absolute;
+  margin:0 9em 0 15em;
+}
 tbody.xwiki-livetable-display-body tr.focused div.entry {
   cursor:auto;	
 }
@@ -620,7 +633,6 @@ div.entry .commentreply a {
 
 tbody.xwiki-livetable-display-body td.title {
   cursor:pointer;
-  background: #imgURL('bullet_arrow_down') no-repeat right bottom;
 }
 table tbody.xwiki-livetable-display-body td {
   padding:0px;
@@ -637,7 +649,6 @@ tbody.xwiki-livetable-display-body td div.cellWrapper {
   text-align:center;
 }
 tbody.xwiki-livetable-display-body td.expanded {
-  background: #imgURL('bullet_arrow_up') no-repeat right bottom;
 }
 
 thead.xwiki-livetable-display-header th.date {

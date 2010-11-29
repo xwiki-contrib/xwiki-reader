@@ -11,9 +11,9 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1270832757000</creationDate>
-<date>1290979272000</date>
-<contentUpdateDate>1290979272000</contentUpdateDate>
-<version>1.5</version>
+<date>1290988499000</date>
+<contentUpdateDate>1290988499000</contentUpdateDate>
+<version>1.7</version>
 <title>Macros for livetable results for custom-mapped classes</title>
 <template></template>
 <defaultTemplate></defaultTemplate>
@@ -214,6 +214,11 @@
         "doc_author_url" : "$escapetool.javascript($xwiki.getURL($itemDoc.author))",
         "doc_date" : "$escapetool.javascript(${xwiki.formatDate($itemDoc.date)})",
         "doc_title" : "$escapetool.javascript($xwiki.getXMLEncoded(${itemDoc.getDisplayTitle()}))",
+        "doc_parent" :  "$escapetool.javascript($itemDoc.parent)",
+        "doc_parent_url" : "$escapetool.javascript($xwiki.getURL($itemDoc.parent))",
+        #if($itemDoc.parent != '')
+        "doc_parent_title" :  "$escapetool.javascript($xwiki.getDocument($itemDoc.parent).displayTitle)",
+        #end
         "doc_author" : "$escapetool.javascript(${xwiki.getLocalUserName($itemDoc.author, false)})",
         "doc_creationDate" : "$escapetool.javascript(${xwiki.formatDate($itemDoc.creationDate)})",
         "doc_creationDate_millis" : "$doc.creationDate.time",
