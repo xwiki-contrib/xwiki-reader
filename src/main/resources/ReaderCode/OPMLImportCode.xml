@@ -11,15 +11,15 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1291140120000</creationDate>
-<date>1291143356000</date>
-<contentUpdateDate>1291143356000</contentUpdateDate>
-<version>4.12</version>
+<date>1291156158000</date>
+<contentUpdateDate>1291156158000</contentUpdateDate>
+<version>5.1</version>
 <title></title>
 <template></template>
 <defaultTemplate></defaultTemplate>
 <validationScript></validationScript>
 <comment></comment>
-<minorEdit>true</minorEdit>
+<minorEdit>false</minorEdit>
 <syntaxId>xwiki/2.0</syntaxId>
 <hidden>false</hidden><attachment>
 <filename>opml-0.3-SNAPSHOT.jar</filename>
@@ -499,7 +499,7 @@ def outputOutline = { outline, isChild -&gt;
   }
   def feedTitle = outline.title ?: outline.text
   if (outline.xmlUrl != '' &amp;&amp; outline.xmlUrl &amp;&amp; feedTitle) {
-    def wouldBeDoc = xwiki.getDocument(xwiki.getUniquePageName(readerSpace, feedTitle))
+    def wouldBeDoc = xwiki.getDocument("${readerSpace}.${xwiki.getUniquePageName(readerSpace, feedTitle)}")
     if(!existingSourceUrls.contains(outline.xmlUrl.trim())) {
       println """
       &lt;li class="xitem importItem"&gt;
@@ -548,11 +548,11 @@ if (request.xaction &amp;&amp; request.xaction == 'importOpml') {
     request.getParameterValues('selected').each {
       def title = request.getParameter("title_${it}")
       def url = request.getParameter("url_${it}")
-      def document = xwiki.getDocument(xwiki.getUniquePageName(readerSpace, title))
+      def document = xwiki.getDocument("${readerSpace}.${xwiki.getUniquePageName(readerSpace, title)}")
       def source = document.getObject('XWiki.AggregatorURLClass', true)
       // Title, parent, content 
       document.setTitle(title)
-      document.setParent("${doc.space}.Sources")
+      document.setParent("${readerSpace}.Sources")
       document.setSyntaxId('xwiki/2.1')
       document.setContent("{{include document='ReaderCode.FeedSheet' /}}")
       source.set('title', title)
