@@ -32,7 +32,7 @@
 $response.setStatus(200)
 $response.setContentType("application/json")
   {
-    'title' : "$escapetool.javascript($feed.title)"
+    "title" : "$escapetool.javascript($feed.title)"
   }
   #else
 $response.setStatus(404)
