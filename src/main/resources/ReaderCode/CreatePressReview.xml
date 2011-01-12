@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xwikidoc>
+<web>ReaderCode</web>
+<name>CreatePressReview</name>
+<language></language>
+<defaultLanguage>en</defaultLanguage>
+<translation>0</translation>
+<parent>ReaderCode.WebHome</parent>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
+<customClass></customClass>
+<contentAuthor>XWiki.Admin</contentAuthor>
+<creationDate>1294767277000</creationDate>
+<date>1294849221000</date>
+<contentUpdateDate>1294849221000</contentUpdateDate>
+<version>2.104</version>
+<title>Create a press review code</title>
+<template></template>
+<defaultTemplate></defaultTemplate>
+<validationScript></validationScript>
+<comment></comment>
+<minorEdit>true</minorEdit>
+<syntaxId>xwiki/2.0</syntaxId>
+<hidden>false</hidden>
+<object>
+<class>
+<name>XWiki.StyleSheetExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<disabled>0</disabled>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<disabled>0</disabled>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<disabled>0</disabled>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<disabled>0</disabled>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<disabled>0</disabled>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>currentPage=Always on this page|onDemand=On demand|always=Always on this wiki</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>ReaderCode.CreatePressReview</name>
+<number>0</number>
+<className>XWiki.StyleSheetExtension</className>
+<guid>f1d83c43-10be-419d-8f9a-0340109ffff3</guid>
+<property>
+<cache>long</cache>
+</property>
+<property>
+<code>div.layoutMessage,
+div.creationMessage {
+    background: none no-repeat scroll 6px 8px #EFEFEF;
+    border: 1px dotted #CCCCCC;
+    margin: 4px 0;
+    overflow: auto;
+    text-align: justify;
+    padding: 12px 12px;
+}
+
+div.creationMessage form,
+div.layoutMessage form {
+    padding: 0px 14px;
+}
+
+div.creationMessage form input[type=text] {
+    width:100%;
+}</code>
+</property>
+<property>
+<name></name>
+</property>
+<property>
+<parse></parse>
+</property>
+<property>
+<use>onDemand</use>
+</property>
+</object>
+<content>{{velocity}}
+##
+## VTL Blocks definitions
+## --------------------------------------------------------------------------------------------------------------
+#define( $pressReview )
+ ## 1. Before
+ $formatterObject.getProperty('beforeContent').value
+
+ ## 2. List
+ #foreach($entry in $matchingArticles)
+   #set($content = $formatterObject.getProperty('itemFormat').value)
+   ## Format the message
+   ## Here we do a simple string replace. In the future, we shall use the velocity display tool instead, to allow printf like formatting
+   ## See http://velocity.apache.org/tools/devel/javadoc/org/apache/velocity/tools/generic/DisplayTool.html
+   #set($content = $content.replaceAll('\{0\}', "${entry}"))
+   #evaluate($content)
+
+ #end
+
+ ## 3. After
+ $formatterObject.getProperty('afterContent').value
+#end
+##
+## Constants
+## --------------------------------------------------------------------------------------------------------------
+#set($DEFAULT_PREVIEW_COUNT = 10)
+#set($PR_COUNT_LIMIT = 100)
+#set($DEFAULT_FORMATTER = 'ReaderCode.DefaultPressReviewFormatter')
+##
+## SX
+## --------------------------------------------------------------------------------------------------------------
+#set($ok = $xwiki.ssx.use('ReaderCode.CreatePressReview'))
+##
+## Find matching articles for PR request
+## --------------------------------------------------------------------------------------------------------------
+#set($queryFrom = ", BaseObject as obj, XWiki.FeedEntryClass as entry")
+#set($queryWhere = "where doc.fullName=obj.name and obj.className='XWiki.FeedEntryClass' and obj.id=entry.id")
+##
+## Flag ?
+#if($request.flag &amp;&amp; $util.parseInt($request.flag))
+  #set($flag = $util.parseInt($request.flag))
+  #set($operator = $request.getParameter("operator@flag"))
+  #if($operator == 'eq')
+    #set($queryWhere = "${queryWhere} and entry.flag = $flag")
+  #elseif($operator == 'gt')
+    #set($queryWhere = "${queryWhere} and entry.flag &gt; $flag")
+  #elseif($operator == 'lt')
+    #set($queryWhere = "${queryWhere} and (entry.flag &lt; $flag or entry.flag is null)")
+  #end
+#end
+##
+## Read ?
+#if($request.read &amp;&amp; $util.parseInt($request.read))
+  #set($operator = $request.getParameter("operator@read"))
+  #set($read = $util.parseInt($request.read))
+  #if($operator &amp;&amp; $operator == 'ne')
+    #set($queryWhere = "${queryWhere} and entry.read &lt;&gt; $read or entry.read is null")
+  #else
+    #set($queryWhere = "${queryWhere} and entry.read &lt;&gt; $read")
+  #end
+#end
+##
+## Sort ?
+#if("$!request.s" != '')
+  #set($querySort = "order by entry.${request.s}")
+#else
+  #set($querySort = "order by entry.date")
+#end
+#if("$!request.d" != '')
+  #set($querySort = "${querySort} ${request.d}")
+#else
+  #set($querySort = "${querySort} desc")
+#end
+##
+#if("$!request.p" == '') ## unlegitimate PR request
+ #set($matchingArticles = [])
+#else
+ #set($matchingArticles = $xwiki.searchDocuments("$queryFrom $queryWhere $querySort", 100, 0))
+#end
+#if($matchingArticles.size() == 0)
+{{error}}$msg.get('reader.pr.noMatchedArticle'){{/error}}
+#else
+#if($matchingArticles.size() &lt; $DEFAULT_PREVIEW_COUNT)
+ #set($previewCount = $matchingArticles.size())
+#else
+ #set($previewCount = $DEFAULT_PREVIEW_COUNT)
+#end
+##
+## Find formatter
+## --------------------------------------------------------------------------------------------------------------
+#set($defaultFormatter = $xwiki.getDocument($DEFAULT_FORMATTER))
+#set($ok = $defaultFormatter.use('ReaderCode.PressReviewFormatterClass'))
+#if("$!request.formatter" != '' &amp;&amp; $xwiki.getDocument($request.formatter).getObject('ReaderCode.PressReviewFormatterClass'))
+  #set($formatter = $xwiki.getDocument($request.formatter))
+#else
+  #set($formatter = $defaultFormatter)
+#end
+#set($ok = $defaultFormatter.use('ReaderCode.PressReviewFormatterClass'))
+#set($ok = $formatter.use('ReaderCode.PressReviewFormatterClass'))
+#set($formatterObject = $formatter.getObject('ReaderCode.PressReviewFormatterClass'))
+##
+## Find page name
+## --------------------------------------------------------------------------------------------------------------
+#if($request.pagename)
+  #set($pagename = $request.pagename)
+#else
+  #set($pagename = $msg.get('reader.pr.pagenameValue', [ $datetool.get('yyyy-MM-dd') ]))
+#end
+#set($displayPreview = false)
+#if($request.create_pressreview) ## CREATION
+##
+## Find page name
+## --------------------------------------------------------------------------------------------------------------
+  #set($prPage = $xwiki.getDocument("${doc.space}.${pagename}"))
+  #if(!$prPage.isNew())
+    #set($displayPreview = true)
+
+{{error}}
+$msg.get('reader.pr.prPageAlreadyExists', [$pagename])
+{{/error}}
+
+  #else
+
+#set($ok = $prPage.setContent( "$pressReview" ))
+#set($ok = $prPage.setTitle($prPage.name))
+#set($ok = $prPage.setParent("${doc.space}.PressReviews"))
+#set($prObject = $prPage.getObject('ReaderCode.PressReviewClass', true))
+## #set($ok = $prObject.set('comment', ''))
+#set($ok = $prPage.save())
+
+$response.sendRedirect($prPage.getURL('view','created=1'))
+
+  #end
+#else
+  #set($displayPreview = true)
+#end
+#if($displayPreview)
+#set($hasContainerMacro = $services.extension.getCoreExtension("org.xwiki.platform:xwiki-core-rendering-macro-dashboard"))
+#if($hasContainerMacro)
+{{container layoutStyle="columns"}}
+#end
+##
+## Formatter selection form
+## --------------------------------------------------------------------------------------------------------------
+(((
+== $msg.get('reader.pr.selectFormatter') ==
+
+{{box image="icon:layout" cssClass="layoutMessage"}}
+
+{{html clean=false}}
+&lt;form class="xform"&gt;
+#foreach($param in $request.getParameterNames())
+ #if($param != 'formatter' &amp;&amp; $param != 'create_pressreview' &amp;&amp; $param != 'refresh_formatter')
+  &lt;input type="hidden" name="$param" value="$request.getParameter($param)" /&gt;
+ #end
+#end
+&lt;div class="prFormatterSelection"&gt;
+  &lt;dl&gt;
+    &lt;dt&gt;
+      &lt;label for="prFormatter"&gt;$msg.get('reader.pr.selectFormatterLabel')&lt;/label&gt;
+      &lt;span class="xHint"&gt;$msg.get('reader.pr.selectFormatterHint')&lt;/span&gt;
+    &lt;/dt&gt;
+    &lt;dd&gt;
+      &lt;select name="formatter" id="prFormatter"&gt;
+      &lt;option value="$defaultFormatter.fullName" #if($formatter.fullName == $defaultFormatter.fullName)selected#end&gt;$defaultFormatter.display('name')&lt;/option&gt;
+      #foreach($formatterReference in $services.query.xwql("from doc.object(ReaderCode.PressReviewFormatterClass) as formatter where doc.fullName &lt;&gt; 'ReaderCode.DefaultPressReviewFormatter'").execute())
+        #set($fmt = $xwiki.getDocument($formatterReference))
+        #set($ok = $fmt.use('ReaderCode.PressReviewFormatterClass'))
+        &lt;option value="${fmt.fullName}" #if($formatter.fullName == $fmt.fullName)selected#end&gt;$fmt.display('name')&lt;/option&gt;
+      #end
+      &lt;/select&gt;
+      &lt;div class="buttons"&gt;
+        &lt;span class="buttonwrapper"&gt;
+          &lt;input class="button" type="submit" name="refresh_formatter" value="$msg.get('reader.pr.refresh')"/&gt;
+        &lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/dd&gt;
+   &lt;/dl&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+{{/html}}
+
+{{/box}}
+
+)))
+##
+## Creation form
+## --------------------------------------------------------------------------------------------------------------
+(((
+== $msg.get('reader.pr.createPressReview') ==
+
+{{box image="icon:report_add" cssClass="creationMessage"}}
+
+{{html clean=false}}
+&lt;form class="xform" method="post"&gt;
+&lt;div&gt;
+  &lt;dl&gt;
+    &lt;dt&gt;
+      &lt;label for="prPagename"&gt;$msg.get('reader.pr.pageNameLabel')&lt;/label&gt;
+      &lt;span class="xHint"&gt;$msg.get('reader.pr.pageNameHint')&lt;/span&gt;
+    &lt;/dt&gt;
+    &lt;dd&gt;
+      &lt;input name="pagename" id="prPagename" type="text" value="$pagename" /&gt;
+      &lt;div class="buttons"&gt;
+        &lt;span class="buttonwrapper"&gt;
+          &lt;input class="button" type="submit" name="create_pressreview" value="$msg.get('reader.pr.create')"/&gt;
+        &lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/dd&gt;
+  &lt;/dl&gt;
+&lt;/div&gt;
+&lt;/form&gt;
+{{/html}}
+
+{{/box}}
+
+)))
+#if($hasContainerMacro)
+{{/container}}
+#end
+##
+## PR Preview
+## --------------------------------------------------------------------------------------------------------------
+
+{{warning}}
+$msg.get('reader.pr.previewWarning', [$previewCount, $matchingArticles.size()])
+{{/warning}}
+
+== $msg.get('reader.pr.preview') ==
+
+$pressReview
+
+#end
+#end ## is preview
+{{/velocity}}</content></xwikidoc>
