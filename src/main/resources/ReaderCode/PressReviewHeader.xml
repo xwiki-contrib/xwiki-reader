@@ -11,9 +11,9 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1294847061000</creationDate>
-<date>1294850914000</date>
-<contentUpdateDate>1294850914000</contentUpdateDate>
-<version>2.11</version>
+<date>1295020158000</date>
+<contentUpdateDate>1295020158000</contentUpdateDate>
+<version>1.2</version>
 <title>Standard Press Review header</title>
 <template></template>
 <defaultTemplate></defaultTemplate>
@@ -23,8 +23,5 @@
 <syntaxId>xwiki/2.0</syntaxId>
 <hidden>false</hidden>
 <content>{{velocity}}
-#set($prData = $doc.getObject('ReaderCode.PressReviewClass'))
 $msg.get('reader.pr.defaultHeaderMessage', ["{{html}}$xwiki.getUserName($doc.creator){{/html}}", $xwiki.formatDate($doc.creationDate, 'YYYY-MM-dd')])
-
-$prData.get('comment')
 {{/velocity}}</content></xwikidoc>

@@ -11,9 +11,9 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1294767277000</creationDate>
-<date>1294849221000</date>
-<contentUpdateDate>1294849221000</contentUpdateDate>
-<version>2.104</version>
+<date>1295019332000</date>
+<contentUpdateDate>1295019332000</contentUpdateDate>
+<version>1.2</version>
 <title>Create a press review code</title>
 <template></template>
 <defaultTemplate></defaultTemplate>
@@ -193,6 +193,11 @@ div.creationMessage form input[type=text] {
   #end
 #end
 ##
+## Title ?
+#if("$!request.title" != '')
+  #set($queryWhere = "${queryWhere} and upper(entry.title) like '%${request.title.toUpperCase()}%'")
+#end
+##
 ## Sort ?
 #if("$!request.s" != '')
   #set($querySort = "order by entry.${request.s}")
@@ -205,11 +210,8 @@ div.creationMessage form input[type=text] {
   #set($querySort = "${querySort} desc")
 #end
 ##
-#if("$!request.p" == '') ## unlegitimate PR request
- #set($matchingArticles = [])
-#else
- #set($matchingArticles = $xwiki.searchDocuments("$queryFrom $queryWhere $querySort", 100, 0))
-#end
+#set($matchingArticlesCount = $xwiki.countDocuments("$queryFrom $queryWhere"))
+#set($matchingArticles = $xwiki.searchDocuments("$queryFrom $queryWhere $querySort", 0, 0))
 #if($matchingArticles.size() == 0)
 {{error}}$msg.get('reader.pr.noMatchedArticle'){{/error}}
 #else

@@ -11,15 +11,15 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1271706438000</creationDate>
-<date>1294755336000</date>
-<contentUpdateDate>1294755336000</contentUpdateDate>
-<version>3.1</version>
+<date>1295012637000</date>
+<contentUpdateDate>1295012637000</contentUpdateDate>
+<version>1.18</version>
 <title>WebHome Sheet for a watch space</title>
 <template></template>
 <defaultTemplate></defaultTemplate>
 <validationScript></validationScript>
 <comment></comment>
-<minorEdit>false</minorEdit>
+<minorEdit>true</minorEdit>
 <syntaxId>xwiki/2.0</syntaxId>
 <hidden>false</hidden><attachment>
 <filename>news.png</filename>
@@ -308,24 +308,36 @@ bnar5QAAAABJRU5ErkJggg==
 </property>
 <property>
 <code>div#readerLink,
-div#preferencesLink {
-  text-align:right;
+div#adminLinks {
+
 }
 
-div#readerLink {
+div#adminLinks {
+  min-height:50px;
+  padding-top:10px;
+}
+
+#readerLink {
   background: url($xwiki.getDocument('ReaderCode.WebHomeSheet').getAttachmentURL('news.png')) no-repeat top right;
   padding-right:70px;
   padding-top:20px;
   font-size:2em;
   min-height:40px;
+  text-align:right;
 }
 
-div#preferencesLink {
+#preferencesLink, #statusLink {
   font-size:1.4em;
-  background: url($xwiki.getDocument('ReaderCode.WebHomeSheet').getAttachmentURL('preferences.png')) no-repeat top right;
-  min-height:30px;
-  padding-right:50px;
+  background: url($xwiki.getDocument('ReaderCode.WebHomeSheet').getAttachmentURL('preferences.png')) no-repeat right center;
+  padding-right:42px;
+  float:right;
+  vertical-align:middle;
   padding-top:10px;
+  padding-bottom:10px;
+}
+
+#preferencesLink {
+  margin-right:20px;
 }</code>
 </property>
 <property>
@@ -384,18 +396,18 @@ div#preferencesLink {
 &lt;/div&gt;
 #end
 #if($hasAdmin)
-&lt;div id="preferencesLink"&gt;
+&lt;div id="adminLinks"&gt;
+&lt;div id="statusLink"&gt;
 &lt;a href="$xwiki.getDocument('Status').getURL()"&gt;→ Status&lt;/a&gt;
 &lt;/div&gt;
-#end
-#* #if($hasAdmin)
 &lt;div id="preferencesLink"&gt;
-&lt;a href="$xwiki.getDocument('WebPreferences').getURL('admin',"editor=spaceadmin&amp;section=CWW&amp;space=$doc.space")"&gt;→ Preferences&lt;/a&gt;
+&lt;a href="$xwiki.getDocument('WebPreferences').getURL('admin',"editor=spaceadmin&amp;section=Reader&amp;space=$doc.space")"&gt;→ Preferences&lt;/a&gt;
 &lt;/div&gt;
-#end *# ## Not ready for prime time
+&lt;/div&gt;
+#end
 {{/html}}
 
-#set($hasContainerMacro = $services.extension.getCoreExtension("org.xwiki.platform:xwiki-core-rendering-macro-dashboard")) 
+#set($hasContainerMacro = $services.extension.getCoreExtension("org.xwiki.platform:xwiki-core-rendering-macro-dashboard"))
 #if(!$hasContainerMacro)
 
 ## pre 3.0
