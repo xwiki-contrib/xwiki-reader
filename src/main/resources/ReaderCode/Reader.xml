@@ -153,7 +153,6 @@ sLNrIAE53U4Rbsy6LQAAAABJRU5ErkJggg==
           XWiki.reader.setContentColumnWidth();
         });
         document.observe("xwiki:fullscreen:exited", function(){
-console.log("full screen exit !");
           XWiki.reader.setContentColumnWidth();
         });
       },
@@ -432,7 +431,6 @@ console.log("full screen exit !");
    * Method that sets the width of the content column header
    */ 
   XWiki.reader.setContentColumnWidth = function(){
-    console.log("recomputing column and entries width");
     var availableWidth = $('mainContentArea').getWidth() - 300;
 
     $('mainContentArea').down('th.entryTitle').setStyle({
