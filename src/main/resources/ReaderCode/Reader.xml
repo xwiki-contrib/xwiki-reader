@@ -584,6 +584,8 @@ div.entry div.entryTitle {
   font-size:1.6em;
   font-weight:bold;
   margin-top:10px;	
+  overflow: visible;
+  white-space: normal;
 }
 
 div.title span.entrySource {
