@@ -11,22 +11,22 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1270831810000</creationDate>
-<date>1290989511000</date>
-<contentUpdateDate>1290989511000</contentUpdateDate>
-<version>1.21</version>
+<date>1294997136000</date>
+<contentUpdateDate>1294997136000</contentUpdateDate>
+<version>3.1</version>
 <title></title>
 <template></template>
 <defaultTemplate></defaultTemplate>
 <validationScript></validationScript>
 <comment></comment>
-<minorEdit>true</minorEdit>
+<minorEdit>false</minorEdit>
 <syntaxId>xwiki/2.0</syntaxId>
 <hidden>false</hidden><attachment>
 <filename>filter.png</filename>
 <filesize>139</filesize>
 <author>XWiki.Admin</author>
-<date>1271802759000</date>
-<version>1.3</version>
+<date>1294991138000</date>
+<version>1.4</version>
 <comment></comment><content>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAUklEQVR42u3QsRYAEAiFYT159eQY
 OCcUwuguTf83BOFy8AQgougNcwMNgIjbMTO3gAeR8fCDFdLH6hMtRItVQEOs2AQkMos/sAAqUu4Z
 sLNrIAE53U4Rbsy6LQAAAABJRU5ErkJggg==
@@ -111,7 +111,7 @@ sLNrIAE53U4Rbsy6LQAAAABJRU5ErkJggg==
 <cache>forbid</cache>
 </property>
 <property>
-<code>(function(XWiki) { 
+<code>var XWiki = (function(XWiki) { 
 
     // Sub-module creation, if needed
     var reader = XWiki.reader = XWiki.reader || {}; 
@@ -150,6 +150,11 @@ sLNrIAE53U4Rbsy6LQAAAABJRU5ErkJggg==
              overflowY:'scroll',
              overflowX:'hidden'
           });
+          XWiki.reader.setContentColumnWidth();
+        });
+        document.observe("xwiki:fullscreen:exited", function(){
+console.log("full screen exit !");
+          XWiki.reader.setContentColumnWidth();
         });
       },
 
@@ -278,9 +283,12 @@ sLNrIAE53U4Rbsy6LQAAAABJRU5ErkJggg==
 
       createContentCell : function() {
 	// Wrap content in a div
+        var entryTitleWidth = ($('mainContentArea').down('table.xwiki-livetable-display').getWidth() - 195 - 200) + 'px';
+        // 195 = 10 (width of the flag column) + 17 (padding of flag col) + 140 (width of date column) + 17 (padding of date column) + a magic number
+        // 200 = width of the source span
 	var newContent = new Element('div', {'class':'title'})
             .insert( new Element("span", {'class':'entrySource'}).update(this.data.doc_parent_title) )
-            .insert( new Element("span", {'class':'entryTitle'}).update(this.contentCell.innerHTML.stripTags()))
+            .insert( new Element("span", {'class':'entryTitle'}).setStyle({width:entryTitleWidth}).update(this.contentCell.innerHTML.stripTags()))
             .observe('click', this.itemTitleClicked.bindAsEventListener(this));
 	this.contentCell.update(newContent);
 	// Enrich content in an hidden div
@@ -418,12 +426,31 @@ sLNrIAE53U4Rbsy6LQAAAABJRU5ErkJggg==
     }
     
   });
-    
+
+
+  /**
+   * Method that sets the width of the content column header
+   */ 
+  XWiki.reader.setContentColumnWidth = function(){
+    console.log("recomputing column and entries width");
+    var availableWidth = $('mainContentArea').getWidth() - 300;
+
+    $('mainContentArea').down('th.entryTitle').setStyle({
+     'width' : availableWidth + 'px'
+    });
+    var entryTitleWidth = ($('mainContentArea').down('table.xwiki-livetable-display').getWidth() - 195 - 200) + 'px';
+    $('mainContentArea').select('td.title div.title span.entryTitle').invoke('setStyle', {'width':entryTitleWidth});
+  }
+
+
+  return XWiki;
 
 }(XWiki || {}));
 
 document.observe("dom:loaded", function(){
+  XWiki.reader.setContentColumnWidth();
   new XWiki.reader.Reader("reader");
+  Event.observe(window, 'resize', XWiki.reader.setContentColumnWidth);
 });</code>
 </property>
 <property>
@@ -529,6 +556,10 @@ document.observe("dom:loaded", function(){
   border-bottom:none; /* remove the table header border bottom so the first article one can display */
 }
 
+#mainContentArea table.xwiki-livetable-display {
+ table-layout:fixed;
+}
+
 tbody.xwiki-livetable-display-body tr.focused {
   border:3px solid #4791BC;
 }
@@ -559,13 +590,15 @@ div.entry div.entryTitle {
 
 div.title span.entrySource {
   white-space:nowrap;
-  width:13.5em;
+  width:200px;
   overflow:hidden;
   position:absolute;
 }
 div.title span.entryTitle {
   position:absolute;
-  margin:0 9em 0 15em;
+  margin:0 0 0 200px;
+  white-space:no-wrap;
+  overflow:hidden;
 }
 tbody.xwiki-livetable-display-body tr.focused div.entry {
   cursor:auto;	
@@ -633,6 +666,8 @@ div.entry .commentreply a {
 
 tbody.xwiki-livetable-display-body td.title {
   cursor:pointer;
+  white-space:nowrap;
+  overflow:hidden;
 }
 table tbody.xwiki-livetable-display-body td {
   padding:0px;
@@ -653,12 +688,14 @@ tbody.xwiki-livetable-display-body td.expanded {
 
 thead.xwiki-livetable-display-header th.date {
   min-width:140px;
+  width:140px;
 }
 tbody.xwiki-livetable-display-body td.flag {
   cursor:pointer;
 }
 thead.xwiki-livetable-display-header th.flag, thead.xwiki-livetable-display-header th.flag {
   min-width:10px;
+  width:10px;
 }
 thead.xwiki-livetable-display-header th.entryTitle {
   width:100%;
@@ -687,9 +724,13 @@ div.fullScreenWrapper {
   overflow-y:scroll;
 }
 
-div.bottombuttons {
+div.fullScreenWrapper div.bottombuttons {
   bottom:0px;
   position:fixed;
+}
+
+div.bottombuttons input {
+  width:auto;
 }
 
 div.fullScreenEditLinkContainer {
