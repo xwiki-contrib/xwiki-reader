@@ -388,7 +388,7 @@ div#adminLinks {
 <content>{{velocity}}
 #set($ok = $xwiki.ssx.use('ReaderCode.WebHomeSheet'))
 #set($ok = $xwiki.ssx.use('Main.Dashboard'))
-#set($hasContainerMacro = $services.extension.getCoreExtension("org.xwiki.platform:xwiki-core-rendering-macro-dashboard"))
+#set($hasContainerMacro = $services.extension.getCoreExtension("org.xwiki.platform:xwiki-core-rendering-macro-container"))
 
 #set($configurationDocument = $xwiki.getDocument("${doc.space}.ReaderConfiguration"))
 #set($ok = $configurationDocument.use("ReaderCode.ReaderConfigurationClass"))
