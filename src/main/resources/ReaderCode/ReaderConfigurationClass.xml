@@ -7,18 +7,18 @@
 <translation>0</translation>
 <parent></parent>
 <creator>XWiki.Admin</creator>
-<author>XWiki.Admin</author>
+<author>xwiki:XWiki.jvelociter</author>
 <customClass></customClass>
-<contentAuthor>XWiki.Admin</contentAuthor>
+<contentAuthor>xwiki:XWiki.jvelociter</contentAuthor>
 <creationDate>1288201508000</creationDate>
-<date>1295010942000</date>
-<contentUpdateDate>1295010942000</contentUpdateDate>
-<version>1.3</version>
+<date>1295209074000</date>
+<contentUpdateDate>1295209074000</contentUpdateDate>
+<version>1.7</version>
 <title></title>
 <template></template>
 <defaultTemplate></defaultTemplate>
 <validationScript></validationScript>
-<comment>Removed class property "description"</comment>
+<comment>Updated class property</comment>
 <minorEdit>true</minorEdit>
 <syntaxId>xwiki/2.0</syntaxId>
 <hidden>false</hidden>
@@ -31,6 +31,32 @@
 <defaultWeb></defaultWeb>
 <nameField></nameField>
 <validationScript></validationScript>
+<description>
+<disabled>0</disabled>
+<editor>Wysiwyg</editor>
+<name>description</name>
+<number>3</number>
+<picker>0</picker>
+<prettyName>Description of this watch space (when not empty, displayed on the space home page)</prettyName>
+<rows>5</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<validationMessage></validationMessage>
+<validationRegExp></validationRegExp>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</description>
+<icon>
+<disabled>0</disabled>
+<name>icon</name>
+<number>4</number>
+<picker>0</picker>
+<prettyName>Reference to an image or icon for the space. Example : ##icon:star## or ##Space.Page@image.png##</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<validationMessage></validationMessage>
+<validationRegExp></validationRegExp>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</icon>
 <prMaxArticleCount>
 <disabled>0</disabled>
 <name>prMaxArticleCount</name>
