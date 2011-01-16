@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xwikidoc>
-<web>ReaderCode</web>
-<name>Star</name>
+<web>Reader</web>
+<name>Heart</name>
 <language></language>
 <defaultLanguage>en</defaultLanguage>
 <translation>0</translation>
-<parent>ReaderCode.FlagClass</parent>
+<parent>Reader.Flags</parent>
 <creator>XWiki.Admin</creator>
 <author>XWiki.Admin</author>
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
-<creationDate>1271019544000</creationDate>
+<creationDate>1271024002000</creationDate>
 <date>1271089448000</date>
 <contentUpdateDate>1271089448000</contentUpdateDate>
 <version>1.1</version>
@@ -18,7 +18,7 @@
 <template></template>
 <defaultTemplate></defaultTemplate>
 <validationScript></validationScript>
-<comment>Imported from XAR</comment>
+<comment></comment>
 <minorEdit>false</minorEdit>
 <syntaxId>xwiki/2.0</syntaxId>
 <hidden>false</hidden>
@@ -33,6 +33,7 @@
 <nameField></nameField>
 <validationScript></validationScript>
 <description>
+<disabled>0</disabled>
 <name>description</name>
 <number>3</number>
 <prettyName>description</prettyName>
@@ -41,6 +42,7 @@
 <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
 </description>
 <icon>
+<disabled>0</disabled>
 <name>icon</name>
 <number>4</number>
 <prettyName>icon</prettyName>
@@ -49,6 +51,7 @@
 <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
 </icon>
 <key>
+<disabled>0</disabled>
 <name>key</name>
 <number>1</number>
 <numberType>long</numberType>
@@ -58,6 +61,7 @@
 <classType>com.xpn.xwiki.objects.classes.NumberClass</classType>
 </key>
 <label>
+<disabled>0</disabled>
 <name>label</name>
 <number>2</number>
 <prettyName>label</prettyName>
@@ -66,21 +70,21 @@
 <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
 </label>
 </class>
-<name>ReaderCode.Star</name>
+<name>Reader.Heart</name>
 <number>0</number>
 <className>ReaderCode.FlagClass</className>
-<guid>9438bb42-38a7-4cdc-a240-7c8d4f11d25e</guid>
+<guid>91184d88-4cb2-4f53-965f-10f9899dcc0f</guid>
 <property>
-<description>Item of interest</description>
+<description>Liked items</description>
 </property>
 <property>
-<icon>star</icon>
+<icon>heart</icon>
 </property>
 <property>
-<key>1</key>
+<key>2</key>
 </property>
 <property>
-<label>Star</label>
+<label>Heart</label>
 </property>
 </object>
 <content>{{include document="ReaderCode.FlagSheet"/}}</content></xwikidoc>
