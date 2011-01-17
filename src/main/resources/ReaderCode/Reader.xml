@@ -11,9 +11,9 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1270831810000</creationDate>
-<date>1295019216000</date>
-<contentUpdateDate>1295019216000</contentUpdateDate>
-<version>2.32</version>
+<date>1295226495000</date>
+<contentUpdateDate>1295226495000</contentUpdateDate>
+<version>1.5</version>
 <title></title>
 <template></template>
 <defaultTemplate></defaultTemplate>
@@ -578,8 +578,9 @@ document.observe("dom:loaded", function(){
 
     //
     $('createPressReview').observe('click', function(){
+      var createPage = new XWiki.Document('CreatePressReview');
       var qs = window.location.hash.length &gt; 1 ? window.location.hash.substring(2) : '';
-      window.open( '$xwiki.getURL("${doc.space}.CreatePressReview")' + "?" + qs, '_blank');
+      window.open( createPage.getURL('view', qs), '_blank');
     });
 
 

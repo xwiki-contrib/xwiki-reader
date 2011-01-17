@@ -7,12 +7,12 @@
 <translation>0</translation>
 <parent>ReaderCode.WebHome</parent>
 <creator>XWiki.Admin</creator>
-<author>xwiki:XWiki.jvelociter</author>
+<author>XWiki.Admin</author>
 <customClass></customClass>
-<contentAuthor>xwiki:XWiki.jvelociter</contentAuthor>
+<contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1271519474000</creationDate>
-<date>1295204891000</date>
-<contentUpdateDate>1295204891000</contentUpdateDate>
+<date>1295223171000</date>
+<contentUpdateDate>1295223171000</contentUpdateDate>
 <version>2.1</version>
 <title>Reader Articles Macro</title>
 <template></template>
@@ -271,7 +271,7 @@ ul.xlist li.readerEntry .head img {
 &lt;div class="head"&gt;
 #if($displayFlags &amp;&amp; $feedEntry.getProperty('flag').value &gt; 0)
 #set($flag = $feedEntry.getProperty('flag').value)
-#set($flagQuery = ", BaseObject as flag, LongProperty as fkey where flag.className='ReaderCode.FlagClass' and flag.name=doc.fullName and flag.id=fkey.id.id and fkey.id.name='key' and fkey.value = '$flag'")
+#set($flagQuery = ", BaseObject as flag, LongProperty as fkey where flag.className='ReaderCode.FlagClass' and flag.name=doc.fullName and flag.id=fkey.id.id and fkey.id.name='key' and fkey.value = '$flag' and doc.space='${doc.space}'")
 #foreach($flagDocumentName in $xwiki.searchDocuments($flagQuery))
  #set($docName = $flagDocumentName)
  #set($icon=$xwiki.getDocument($flagDocumentName).getObject('ReaderCode.FlagClass').getProperty('icon').value)

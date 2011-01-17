@@ -11,16 +11,16 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1294767277000</creationDate>
-<date>1295019332000</date>
-<contentUpdateDate>1295019332000</contentUpdateDate>
-<version>1.2</version>
+<date>1295227400000</date>
+<contentUpdateDate>1295227400000</contentUpdateDate>
+<version>1.8</version>
 <title>Create a press review code</title>
 <template></template>
 <defaultTemplate></defaultTemplate>
 <validationScript></validationScript>
 <comment></comment>
 <minorEdit>true</minorEdit>
-<syntaxId>xwiki/2.0</syntaxId>
+<syntaxId>xwiki/2.1</syntaxId>
 <hidden>false</hidden>
 <object>
 <class>
@@ -135,9 +135,18 @@ div.creationMessage form input[type=text] {
 ##
 ## VTL Blocks definitions
 ## --------------------------------------------------------------------------------------------------------------
+#define( $preambule )
+ ## 0. Silent code (SSX etc.)
+ #if("$!formatterObject.getProperty('silentCode').value" != '')
+{{velocity output=false}}
+$formatterObject.getProperty('silentCode').value
+{{/velocity}}
+
+ #end
+#end
 #define( $pressReview )
  ## 1. Before
- $formatterObject.getProperty('beforeContent').value
+$formatterObject.getProperty('beforeContent').value
 
  ## 2. List
  #foreach($entry in $matchingArticles)
@@ -151,7 +160,7 @@ div.creationMessage form input[type=text] {
  #end
 
  ## 3. After
- $formatterObject.getProperty('afterContent').value
+$formatterObject.getProperty('afterContent').value
 #end
 ##
 ## Constants
@@ -256,7 +265,8 @@ $msg.get('reader.pr.prPageAlreadyExists', [$pagename])
 
   #else
 
-#set($ok = $prPage.setContent( "$pressReview" ))
+#set($ok = $prPage.setSyntaxId('xwiki/2.1'))
+#set($ok = $prPage.setContent( "$preambule $pressReview" ))
 #set($ok = $prPage.setTitle($prPage.name))
 #set($ok = $prPage.setParent("${doc.space}.PressReviews"))
 #set($prObject = $prPage.getObject('ReaderCode.PressReviewClass', true))
@@ -362,6 +372,9 @@ $msg.get('reader.pr.previewWarning', [$previewCount, $matchingArticles.size()])
 {{/warning}}
 
 == $msg.get('reader.pr.preview') ==
+
+## Make sure we have the SX and all.
+#evaluate( $formatterObject.getProperty('silentCode').value )
 
 $pressReview
 

@@ -11,9 +11,9 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1294764292000</creationDate>
-<date>1294844289000</date>
-<contentUpdateDate>1294844289000</contentUpdateDate>
-<version>3.2</version>
+<date>1295226878000</date>
+<contentUpdateDate>1295226878000</contentUpdateDate>
+<version>2.10</version>
 <title>Default press review formatter</title>
 <template></template>
 <defaultTemplate></defaultTemplate>
@@ -86,6 +86,16 @@
 <validationRegExp></validationRegExp>
 <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
 </name>
+<silentCode>
+<disabled>0</disabled>
+<name>silentCode</name>
+<number>5</number>
+<prettyName>silentCode</prettyName>
+<rows>5</rows>
+<size>40</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</silentCode>
 </class>
 <name>ReaderCode.DefaultPressReviewFormatter</name>
 <number>0</number>
@@ -95,16 +105,168 @@
 <afterContent></afterContent>
 </property>
 <property>
-<beforeContent>{{velocity}}
-#set($ok = $xwiki.ssx.use('ReaderCode.DefaultPressReviewFormatter'))
-Press review created by $xwiki.getUserName($context.user)
-{{/velocity}}
-
-{{include document="ReaderCode.PressReviewHeader" /}}</beforeContent>
+<beforeContent>{{include document="ReaderCode.PressReviewHeader" /}}</beforeContent>
 </property>
 <property>
-<itemFormat>{{pressReviewArticle article="{0}" /}}
-</itemFormat></property><property><name>Default formatter</name>
+<itemFormat>#set($article = $xwiki.getDocument("{0}"))
+#set($feedEntry = $article.getObject('XWiki.FeedEntryClass'))
+#if($util.parseInt($feedEntry.getProperty('flag')) &amp;&amp; $util.parseInt($feedEntry.getProperty('flag')) &gt; 0)
+  #set($flagQuery = ", BaseObject as flag, LongProperty as fkey where flag.className='ReaderCode.FlagClass' and flag.name=doc.fullName and flag.id=fkey.id.id and fkey.id.name='key' and fkey.value = '$flag' and doc.space='${doc.space}'")
+  #foreach($flagDocumentName in $xwiki.searchDocuments($flagQuery))
+   #set($docName = $flagDocumentName)
+   #set($icon=$xwiki.getDocument($flagDocumentName).getObject('ReaderCode.FlagClass').getProperty('icon').value)
+   #break
+#end
+
+#end
+
+== {{link document="$article.fullName" label="$article.displayTitle" /}}
+
+#if("$!icon" != '')
+image:icon:$icon
+#end
+
+{{box}}
+$msg.get('reader.pr.defaultFormatter.originalArticleByAndFrom', [
+  $feedEntry.getProperty('author').value,
+  $xwiki.getDocument("${doc.space}.${feedEntry.getProperty('feedname').value}").displayTitle,
+  $feedEntry.getProperty('url').value,
+  $feedEntry.get('date')
+])
+{{/box}}
+#if($article.getObjects('AnnotationCode.AnnotationClass').size() &gt; 0)
+=== $msg.get('reader.pr.defaultFormatter.annotations') ===
+#foreach($annotation in $article.getObjects('AnnotationCode.AnnotationClass'))
+(% class="annotation" %) (((
+(% class="author" %) ((( {{useravatar username="$annotation.getProperty('author').value" /}} {{html wiki=true}}$xwiki.getUserName($annotation.getProperty('author').value){{/html}} )))
+(% class="selection" %) $annotation.getProperty('selection').value
+(% class="comment" %)(((
+$annotation.getProperty('annotation').value
+)))
+)))
+#end
+#end
+#if($article.getObjects('XWiki.XWikiComments').size() &gt; 0)
+=== $msg.get('reader.pr.defaultFormatter.comments') ===
+#foreach($comment in $article.getObjects('XWiki.XWikiComments'))
+(% class="comment" %) (((
+(% class="author" %) ((( {{useravatar username="$comment.getProperty('author').value" /}} {{html wiki=true}}$xwiki.getUserName($comment.getProperty('author').value){{/html}} )))
+(% class="comment" %) (((
+$comment.getProperty('comment').value
+)))
+)))
+#end
+
+#end</itemFormat>
+</property>
+<property>
+<name>Default formatter</name>
+</property>
+<property>
+<silentCode>#set($ok = $xwiki.ssx.use('ReaderCode.DefaultPressReviewFormatter'))</silentCode>
+</property>
+</object>
+<object>
+<class>
+<name>XWiki.StyleSheetExtension</name>
+<customClass></customClass>
+<customMapping></customMapping>
+<defaultViewSheet></defaultViewSheet>
+<defaultEditSheet></defaultEditSheet>
+<defaultWeb></defaultWeb>
+<nameField></nameField>
+<validationScript></validationScript>
+<cache>
+<cache>0</cache>
+<disabled>0</disabled>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>cache</name>
+<number>5</number>
+<prettyName>Caching policy</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>long|short|default|forbid</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</cache>
+<code>
+<disabled>0</disabled>
+<name>code</name>
+<number>2</number>
+<prettyName>Code</prettyName>
+<rows>20</rows>
+<size>50</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+</code>
+<name>
+<disabled>0</disabled>
+<name>name</name>
+<number>1</number>
+<prettyName>Name</prettyName>
+<size>30</size>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+</name>
+<parse>
+<disabled>0</disabled>
+<displayFormType>select</displayFormType>
+<displayType>yesno</displayType>
+<name>parse</name>
+<number>4</number>
+<prettyName>Parse content</prettyName>
+<unmodifiable>0</unmodifiable>
+<classType>com.xpn.xwiki.objects.classes.BooleanClass</classType>
+</parse>
+<use>
+<cache>0</cache>
+<disabled>0</disabled>
+<displayType>select</displayType>
+<multiSelect>0</multiSelect>
+<name>use</name>
+<number>3</number>
+<prettyName>Use this extension</prettyName>
+<relationalStorage>0</relationalStorage>
+<separator> </separator>
+<separators> ,|</separators>
+<size>1</size>
+<unmodifiable>0</unmodifiable>
+<values>currentPage=Always on this page|onDemand=On demand|always=Always on this wiki</values>
+<classType>com.xpn.xwiki.objects.classes.StaticListClass</classType>
+</use>
+</class>
+<name>ReaderCode.DefaultPressReviewFormatter</name>
+<number>0</number>
+<className>XWiki.StyleSheetExtension</className>
+<guid>c794daa3-ec5f-46da-9978-15d248e753e8</guid>
+<property>
+<cache>long</cache>
+</property>
+<property>
+<code>div.annotation div.author img,
+div.comment div.author img {
+  height:50px;
+}
+
+div.annotation span.selection {
+  background: url("$xwiki.getSkinFile('icons/silk/note.gif')") no-repeat 0 0 #FFFFDD;
+  color: grey;
+  font-size: 0.9em;
+  font-style: italic;
+  padding-left: 20px;
+}</code>
+</property>
+<property>
+<name></name>
+</property>
+<property>
+<parse>1</parse>
+</property>
+<property>
+<use>currentPage</use>
 </property>
 </object>
 <content>{{include document="ReaderCode.PressReviewFormatterSheet" /}}</content></xwikidoc>
