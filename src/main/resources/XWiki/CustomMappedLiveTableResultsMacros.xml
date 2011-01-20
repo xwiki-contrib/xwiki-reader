@@ -11,15 +11,15 @@
 <customClass></customClass>
 <contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1270832757000</creationDate>
-<date>1290988499000</date>
-<contentUpdateDate>1290988499000</contentUpdateDate>
-<version>1.7</version>
+<date>1295551017000</date>
+<contentUpdateDate>1295551017000</contentUpdateDate>
+<version>2.1</version>
 <title>Macros for livetable results for custom-mapped classes</title>
 <template></template>
 <defaultTemplate></defaultTemplate>
 <validationScript></validationScript>
 <comment></comment>
-<minorEdit>true</minorEdit>
+<minorEdit>false</minorEdit>
 <syntaxId>xwiki/2.0</syntaxId>
 <hidden>false</hidden>
 <content>{{velocity output="false"}}#**
@@ -301,6 +301,7 @@
               "$escapetool.javascript(${colname})_url" : "$escapetool.javascript($fieldUrl)"
             #if($propType == 'DateClass')
               , "$escapetool.javascript(${colname})_millis" : "$escapetool.javascript($!itemDoc.getValue($colname).time)"
+              , "$escapetool.javascript(${colname})_display" : "$escapetool.javascript($xwiki.formatDate($!itemDoc.getValue($colname)))"
             #end
             ## reset to the default class
             #set($discard = $itemDoc.use($className))

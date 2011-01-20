@@ -828,8 +828,7 @@ tbody.xwiki-livetable-display-body td.flag {
   cursor:pointer;
 }
 thead.xwiki-livetable-display-header th.flag, thead.xwiki-livetable-display-header th.flag {
-  min-width:10px;
-  width:10px;
+  width:30px;
 }
 thead.xwiki-livetable-display-header th.entryTitle {
   width:100%;
