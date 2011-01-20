@@ -6,10 +6,10 @@
 <defaultLanguage>en</defaultLanguage>
 <translation>0</translation>
 <parent>Reader.WebHome</parent>
-<creator>xwiki:XWiki.jvelociter</creator>
-<author>xwiki:XWiki.jvelociter</author>
+<creator>XWiki.Admin</creator>
+<author>XWiki.Admin</author>
 <customClass></customClass>
-<contentAuthor>xwiki:XWiki.jvelociter</contentAuthor>
+<contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1295205514000</creationDate>
 <date>1295205569000</date>
 <contentUpdateDate>1295205569000</contentUpdateDate>

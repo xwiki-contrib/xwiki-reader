@@ -7,9 +7,9 @@
 <translation>0</translation>
 <parent>Main.WebHome</parent>
 <creator>XWiki.Admin</creator>
-<author>xwiki:XWiki.jvelociter</author>
+<author>XWiki.Admin</author>
 <customClass></customClass>
-<contentAuthor>xwiki:XWiki.jvelociter</contentAuthor>
+<contentAuthor>XWiki.Admin</contentAuthor>
 <creationDate>1272916516000</creationDate>
 <date>1295209909000</date>
 <contentUpdateDate>1295209909000</contentUpdateDate>
