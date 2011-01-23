@@ -734,6 +734,11 @@ div.title span.entryTitle {
   white-space:no-wrap;
   overflow:hidden;
 }
+
+div.entry div.content {
+  white-space:normal
+}
+
 tbody.xwiki-livetable-display-body tr.focused div.entry {
   cursor:auto;	
 }
