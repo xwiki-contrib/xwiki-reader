@@ -1,49 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <xwikidoc>
-<web>ReaderCode</web>
-<name>PressReviewClass</name>
-<language></language>
-<defaultLanguage>en</defaultLanguage>
-<translation>0</translation>
-<parent>ReaderCode.WebHome</parent>
-<creator>XWiki.Admin</creator>
-<author>XWiki.Admin</author>
-<customClass></customClass>
-<contentAuthor>XWiki.Admin</contentAuthor>
-<creationDate>1294846775000</creationDate>
-<date>1294849115000</date>
-<contentUpdateDate>1294849115000</contentUpdateDate>
-<version>1.8</version>
-<title>Class definition for Press reviews</title>
-<template></template>
-<defaultTemplate></defaultTemplate>
-<validationScript></validationScript>
-<comment>Removed class property "creator"</comment>
-<minorEdit>true</minorEdit>
-<syntaxId>xwiki/2.0</syntaxId>
-<hidden>false</hidden>
-<class>
-<name>ReaderCode.PressReviewClass</name>
-<customClass></customClass>
-<customMapping></customMapping>
-<defaultViewSheet></defaultViewSheet>
-<defaultEditSheet></defaultEditSheet>
-<defaultWeb></defaultWeb>
-<nameField></nameField>
-<validationScript></validationScript>
-<comment>
-<disabled>0</disabled>
-<editor>---</editor>
-<name>comment</name>
-<number>3</number>
-<picker>0</picker>
-<prettyName>comment</prettyName>
-<rows>15</rows>
-<size>80</size>
-<unmodifiable>0</unmodifiable>
-<validationMessage></validationMessage>
-<validationRegExp></validationRegExp>
-<classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
-</comment>
-</class>
-<content>{{include document="XWiki.ClassSheet" /}}</content></xwikidoc>
+  <web>ReaderCode</web>
+  <name>PressReviewClass</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <parent>ReaderCode.WebHome</parent>
+  <creator>xwiki:XWiki.Admin</creator>
+  <author>xwiki:XWiki.Admin</author>
+  <customClass/>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <creationDate>1294846775000</creationDate>
+  <date>1294849115000</date>
+  <contentUpdateDate>1294849115000</contentUpdateDate>
+  <version>1.1</version>
+  <title>Class definition for Press reviews</title>
+  <template/>
+  <defaultTemplate/>
+  <validationScript/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.0</syntaxId>
+  <hidden>false</hidden>
+  <class>
+    <name>ReaderCode.PressReviewClass</name>
+    <customClass/>
+    <customMapping/>
+    <defaultViewSheet/>
+    <defaultEditSheet/>
+    <defaultWeb/>
+    <nameField/>
+    <validationScript/>
+    <comment>
+      <disabled>0</disabled>
+      <editor>---</editor>
+      <name>comment</name>
+      <number>3</number>
+      <picker>0</picker>
+      <prettyName>comment</prettyName>
+      <rows>15</rows>
+      <size>80</size>
+      <unmodifiable>0</unmodifiable>
+      <validationMessage/>
+      <validationRegExp/>
+      <classType>com.xpn.xwiki.objects.classes.TextAreaClass</classType>
+    </comment>
+  </class>
+  <content>{{include document="XWiki.ClassSheet" /}}</content>
+</xwikidoc>

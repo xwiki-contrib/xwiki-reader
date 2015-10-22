@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <xwikidoc>
-<web>Reader</web>
-<name>PressReviews</name>
-<language></language>
-<defaultLanguage>en</defaultLanguage>
-<translation>0</translation>
-<parent>Reader.WebHome</parent>
-<creator>XWiki.Admin</creator>
-<author>XWiki.Admin</author>
-<customClass></customClass>
-<contentAuthor>XWiki.Admin</contentAuthor>
-<creationDate>1294848677000</creationDate>
-<date>1294849692000</date>
-<contentUpdateDate>1294849692000</contentUpdateDate>
-<version>3.1</version>
-<title>Press reviews</title>
-<template></template>
-<defaultTemplate></defaultTemplate>
-<validationScript></validationScript>
-<comment></comment>
-<minorEdit>false</minorEdit>
-<syntaxId>xwiki/2.0</syntaxId>
-<hidden>false</hidden>
-<content>{{include document="ReaderCode.PressReviewsHomeSheet" /}}</content></xwikidoc>
+  <web>Reader</web>
+  <name>PressReviews</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <parent>Reader.WebHome</parent>
+  <creator>xwiki:XWiki.Admin</creator>
+  <author>xwiki:XWiki.Admin</author>
+  <customClass/>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <creationDate>1294848677000</creationDate>
+  <date>1294849692000</date>
+  <contentUpdateDate>1294849692000</contentUpdateDate>
+  <version>1.1</version>
+  <title>Press reviews</title>
+  <template/>
+  <defaultTemplate/>
+  <validationScript/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.0</syntaxId>
+  <hidden>false</hidden>
+  <content>{{include document="ReaderCode.PressReviewsHomeSheet" /}}</content>
+</xwikidoc>

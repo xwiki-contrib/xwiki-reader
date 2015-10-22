@@ -1,90 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <xwikidoc>
-<web>Reader</web>
-<name>Star</name>
-<language></language>
-<defaultLanguage>en</defaultLanguage>
-<translation>0</translation>
-<parent>Reader.Flags</parent>
-<creator>XWiki.Admin</creator>
-<author>XWiki.Admin</author>
-<customClass></customClass>
-<contentAuthor>XWiki.Admin</contentAuthor>
-<creationDate>1271019544000</creationDate>
-<date>1271089448000</date>
-<contentUpdateDate>1271089448000</contentUpdateDate>
-<version>1.1</version>
-<title></title>
-<template></template>
-<defaultTemplate></defaultTemplate>
-<validationScript></validationScript>
-<comment></comment>
-<minorEdit>false</minorEdit>
-<syntaxId>xwiki/2.0</syntaxId>
-<hidden>false</hidden>
-<object>
-<class>
-<name>ReaderCode.FlagClass</name>
-<customClass></customClass>
-<customMapping></customMapping>
-<defaultViewSheet></defaultViewSheet>
-<defaultEditSheet></defaultEditSheet>
-<defaultWeb></defaultWeb>
-<nameField></nameField>
-<validationScript></validationScript>
-<description>
-<disabled>0</disabled>
-<name>description</name>
-<number>3</number>
-<prettyName>description</prettyName>
-<size>30</size>
-<unmodifiable>0</unmodifiable>
-<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
-</description>
-<icon>
-<disabled>0</disabled>
-<name>icon</name>
-<number>4</number>
-<prettyName>icon</prettyName>
-<size>30</size>
-<unmodifiable>0</unmodifiable>
-<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
-</icon>
-<key>
-<disabled>0</disabled>
-<name>key</name>
-<number>1</number>
-<numberType>long</numberType>
-<prettyName>key</prettyName>
-<size>30</size>
-<unmodifiable>0</unmodifiable>
-<classType>com.xpn.xwiki.objects.classes.NumberClass</classType>
-</key>
-<label>
-<disabled>0</disabled>
-<name>label</name>
-<number>2</number>
-<prettyName>label</prettyName>
-<size>30</size>
-<unmodifiable>0</unmodifiable>
-<classType>com.xpn.xwiki.objects.classes.StringClass</classType>
-</label>
-</class>
-<name>Reader.Star</name>
-<number>0</number>
-<className>ReaderCode.FlagClass</className>
-<guid>7513710e-fa97-43b4-96c4-4aadfa2c570d</guid>
-<property>
-<description>Item of interest</description>
-</property>
-<property>
-<icon>star</icon>
-</property>
-<property>
-<key>1</key>
-</property>
-<property>
-<label>Star</label>
-</property>
-</object>
-<content>{{include document="ReaderCode.FlagSheet"/}}</content></xwikidoc>
+  <web>Reader</web>
+  <name>Star</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <parent>Reader.Flags</parent>
+  <creator>xwiki:XWiki.Admin</creator>
+  <author>xwiki:XWiki.Admin</author>
+  <customClass/>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <creationDate>1271019544000</creationDate>
+  <date>1271089448000</date>
+  <contentUpdateDate>1271089448000</contentUpdateDate>
+  <version>1.1</version>
+  <title/>
+  <template/>
+  <defaultTemplate/>
+  <validationScript/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.0</syntaxId>
+  <hidden>false</hidden>
+  <object>
+    <class>
+      <name>ReaderCode.FlagClass</name>
+      <customClass/>
+      <customMapping/>
+      <defaultViewSheet/>
+      <defaultEditSheet/>
+      <defaultWeb/>
+      <nameField/>
+      <validationScript/>
+      <description>
+        <disabled>0</disabled>
+        <name>description</name>
+        <number>3</number>
+        <prettyName>description</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </description>
+      <icon>
+        <disabled>0</disabled>
+        <name>icon</name>
+        <number>4</number>
+        <prettyName>icon</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </icon>
+      <key>
+        <disabled>0</disabled>
+        <name>key</name>
+        <number>1</number>
+        <numberType>long</numberType>
+        <prettyName>key</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.NumberClass</classType>
+      </key>
+      <label>
+        <disabled>0</disabled>
+        <name>label</name>
+        <number>2</number>
+        <prettyName>label</prettyName>
+        <size>30</size>
+        <unmodifiable>0</unmodifiable>
+        <classType>com.xpn.xwiki.objects.classes.StringClass</classType>
+      </label>
+    </class>
+    <name>Reader.Star</name>
+    <number>0</number>
+    <className>ReaderCode.FlagClass</className>
+    <guid>7513710e-fa97-43b4-96c4-4aadfa2c570d</guid>
+    <property>
+      <description>Item of interest</description>
+    </property>
+    <property>
+      <icon>star</icon>
+    </property>
+    <property>
+      <key>1</key>
+    </property>
+    <property>
+      <label>Star</label>
+    </property>
+  </object>
+  <content>{{include document="ReaderCode.FlagSheet"/}}</content>
+</xwikidoc>

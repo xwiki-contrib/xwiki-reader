@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <xwikidoc>
-<web>ReaderCode</web>
-<name>PressReviewsHomeSheet</name>
-<language></language>
-<defaultLanguage>en</defaultLanguage>
-<translation>0</translation>
-<parent></parent>
-<creator>XWiki.Admin</creator>
-<author>XWiki.Admin</author>
-<customClass></customClass>
-<contentAuthor>XWiki.Admin</contentAuthor>
-<creationDate>1294849692000</creationDate>
-<date>1294850688000</date>
-<contentUpdateDate>1294850688000</contentUpdateDate>
-<version>1.13</version>
-<title>Press reviews home page sheet</title>
-<template></template>
-<defaultTemplate></defaultTemplate>
-<validationScript></validationScript>
-<comment></comment>
-<minorEdit>true</minorEdit>
-<syntaxId>xwiki/2.0</syntaxId>
-<hidden>false</hidden>
-<content>{{velocity}}
+  <web>ReaderCode</web>
+  <name>PressReviewsHomeSheet</name>
+  <language/>
+  <defaultLanguage/>
+  <translation>0</translation>
+  <parent/>
+  <creator>xwiki:XWiki.Admin</creator>
+  <author>xwiki:XWiki.Admin</author>
+  <customClass/>
+  <contentAuthor>xwiki:XWiki.Admin</contentAuthor>
+  <creationDate>1294849692000</creationDate>
+  <date>1294850688000</date>
+  <contentUpdateDate>1294850688000</contentUpdateDate>
+  <version>1.1</version>
+  <title>Press reviews home page sheet</title>
+  <template/>
+  <defaultTemplate/>
+  <validationScript/>
+  <comment/>
+  <minorEdit>false</minorEdit>
+  <syntaxId>xwiki/2.0</syntaxId>
+  <hidden>false</hidden>
+  <content>{{velocity}}
 #set($collist = ["doc.title", "doc.creator", "doc.creationDate"])
 #set($colprops = {
    "doc.title" : { "link" : 'view',"type" : "text" , "size" : 30, "sortable":true, "filterable":true}
@@ -40,4 +41,5 @@
    ,"defaultOrder": "desc"
 })
 #livetable("pressReviews" $collist $colprops $options) 
-{{/velocity}}</content></xwikidoc>
+{{/velocity}}</content>
+</xwikidoc>
