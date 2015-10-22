@@ -33,13 +33,13 @@
   <artifactId>xwiki-application-reader</artifactId>
   <name>XWiki - Applications - Reader</name>
   <description>A Collaborative Web Reader for watch teams</description>
-  <version>1.0-rc-2</version>
+  <version>1.0-rc-3-SNAPSHOT</version>
   <packaging>xar</packaging>
   <scm>
     <connection>scm:git:git://github.com/xwiki-contrib/xwiki-reader.git</connection>
     <developerConnection>scm:git:git@github.com:xwiki-contrib/xwiki-reader.git</developerConnection>
     <url>https://github.com/xwiki-contrib/xwiki-reader.git</url>
-    <tag>xwiki-application-reader-1.0-rc-2</tag>
+    <tag>HEAD</tag>
   </scm>
   <distributionManagement>
     <repository>
