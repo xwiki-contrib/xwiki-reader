@@ -51,7 +51,7 @@
       <name>icon</name>
       <number>4</number>
       <picker>0</picker>
-      <prettyName>Reference to an image or icon for the space. Example : ##icon:star## or ##Space.Page@image.png##</prettyName>
+      <prettyName>Reference to an image or icon for the space. Example : "icon:star" or "Space.Page@image.png"</prettyName>
       <size>30</size>
       <unmodifiable>0</unmodifiable>
       <validationMessage/>
